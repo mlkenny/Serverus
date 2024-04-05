@@ -3,3 +3,4 @@ CSC-131 project; developing homeless resource website to provide information, di
 
 # Project Members
 Michael Kenny
+Tuan Doan
