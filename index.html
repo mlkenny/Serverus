@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<!--TO BE FIXED-->
+<!--page still enables horizontal scrolling for some reason, although it shouldn't. (might be a css issue)-->
+<!--divs are not dynamic with zoom.-->
+<!--text isn't positioned right for "We're Here to Help"-->
+<!--side bar buttons and about us/sign-in have yet to be implemented.-->
+<html>
+    <!--HEAD OF PAGE-->
+    <head>
+        <title>SacCares</title>
+
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    </head>
+
+    <!--SIDE PANEL DIVIDER-->
+    <div class="side-panel">
+        <img src="Frontend\Assets\sacstatelogo.jpg" alt="Sac State Logo" class="sac-logo">
+        <body>
+            <h1 class="blue-title-text" style="position: absolute; top: 10px; left: 70px; font-family: Roboto Serif; font-weight: bolder;">
+                SacCares
+            </h1>
+        </body>
+    </div>
+
+    <!--TOP PANEL DIVIDER-->
+    <div class="top-panel">
+        <h1 class="blue-title-text" style="font-family: Inter; text-align: left; position: relative; left: 50px">Welcome to SacCares!</h1>
+    </div>
+
+    <!--CENTER PANEL DIVIDER-->
+    <div class="center-panel">
+        <img src="Frontend\Assets\towerbridge.jpg" alt="Tower Bridge" class="tower-bridge">
+        <div class="info-card" style="position: relative; top: 200px; left: 1020px;background-color: rgba(255, 255, 255, 0.55);">
+            
+        </div>
+        <div class="info-card" style="position: absolute; top: 210px; left: 1010px;background-color: rgba(255, 255, 255, 0.31);">
+            <body>
+                <h1 class="header-text">
+                    We’re Here To Help
+                </h1>
+                <p1 class="body-text">
+                    <!-- I can't figure out how to position/align the text here, looks funky atm.-->
+                    SacCares is a website dedicated to helping those in the Sacramento area who are experiencing homelessness
+                    find the resources they need to thrive. We can help you find shelters, healthcare, and other vital resources that you
+                    and your family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.
+                </p1>
+            </body>
+        </div>
+    </div>
+</html>
