@@ -4,6 +4,31 @@ public class User {
     boolean LoggedIn;
     String email;
     String password;
+    
+    // Logging In
+    public void logIn() {
+        this.LoggedIn = true;
+    }
+    // Setters
+    public void setID(int userID) {
+        this.userID = userID;
+    }
+    public void setEmail(String email) {
+        this.email = email;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    // Getters
+    public int getID() {
+        return this.userID;
+    }
+    public String getEmail() {
+        return this.email;
+    }
+    public String getPassword() {
+        return this.password;
+    }
 
     /*<- REMOVE THIS WHEN READY TO IMPLEMENT
     // searchEmployment Method: Should return the possible employment opportunities based off the given keywords. 
