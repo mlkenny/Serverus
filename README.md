@@ -2,4 +2,4 @@
 CSC-131 project; developing homeless resource website to provide information, directions, and more.
 
 # Project Members
-Michael Kenny, Tuan Doan, Mohamed Ismail, Logan Jenkins
+Michael Kenny, Tuan Doan, Mohamed Ismail, Logan Jenkins, Vokil Alla Nur
