@@ -84,3 +84,9 @@ html {
     left: 20px;
     max-width: 250px;
 }
+
+.g-signin2 {
+    position: relative;
+    top: 90px;
+    left: 75px;
+}

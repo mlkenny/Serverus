@@ -9,9 +9,11 @@
     <!--HEAD OF PAGE-->
     <head>
         <title>SacCares</title>
-
         <link rel="stylesheet" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="104764457753-urb7g80r6oq3j72stn66q0ooks96h7l6.apps.googleusercontent.com">
+        <script src="script.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
@@ -24,6 +26,7 @@
             <h1 class="blue-title-text" style="position: absolute; top: 10px; left: 70px; font-family: Roboto Serif; font-weight: bolder;">
                 SacCares
             </h1>
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
         </body>
     </div>
 
