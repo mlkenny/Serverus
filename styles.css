@@ -1,72 +1,47 @@
-/*Page size seems to be = width: 1865px, height: 930px*/
 html {
     max-width: 100%;
     max-height: 100%;
 }
 
-.header-text {
+/* all font families are added in html. */
+
+/*Font Family: Roboto Serif, for SacCares.*/
+/*Font Family: Inter, for everything else.*/
+.blue-header {
+    text-align: center;
+    color: #20B7F7;
+    font-size: 38px;
+    font-weight: bolder;
+    word-wrap: break-word
+}
+/*Font Family: Lato, added in html.*/
+.green-header {
     text-indent: 3em;
     color: #36453B;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
     word-wrap: break-word
 }
-
+/*Font Family: Inter, added in html.*/
 .body-text {
-    text-indent: 2em each-line;
-    text-align: end;
-    color: #36453B;
-    font-size: 14px;
-    font-family: Lato;
-    font-weight: 400;
+    text-align: left;
+    color: #000000;
+    font-size: 20px;
     word-wrap: break-word
 }
-
-.blue-title-text {
+/*Font Family: Inter, added in html.*/
+.blue-body-text {
     text-align: center;
     color: #20B7F7;
-    font-size: 32px;
+    font-size: 18px;
     word-wrap: break-word
 }
-
-.top-panel {
-    position: absolute;
-    top: 20px;
-    left: 310px;
-    height: 80px;
-    width: 1540px;
-    
-    background-color: white;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.50)
-}
-
-.side-panel {
-    position: absolute;
-    top: 20px;
-    left: 5px;
-    height: 895px;
-    width: 300px;
-    
-    background-color: white;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.50)
-}
-
-.center-panel {
-    position: absolute;
-    top: 105px;
-    left: 310px;
-    height: 810px;
-    width: 1540px;
-
-    background-color: white;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.50)
-}
-
-.info-card {
-    width: 400px;
-    height: 400px;
-
-    backdrop-filter: blur(5.90px);
+/*Font Family: Inter, added in html.*/
+.body-text-highlighted {
+    text-align: left;
+    color: #ffffff;
+    font-size: 20px;
+    word-wrap: break-word
 }
 
 .tower-bridge {
@@ -83,10 +58,4 @@ html {
     top: 80px;
     left: 20px;
     max-width: 250px;
-}
-
-.g-signin2 {
-    position: relative;
-    top: 90px;
-    left: 75px;
 }
