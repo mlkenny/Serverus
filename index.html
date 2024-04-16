@@ -1,11 +1,5 @@
 <!DOCTYPE html>
 
-<!--TO BE FIXED-->
-<!--page still enables horizontal scrolling for some reason, although it shouldn't. (might be a css issue)-->
-<!--divs are not dynamic with zoom.-->
-<!--text isn't positioned right for "We're Here to Help"-->
-<!--side bar buttons and about us/sign-in have yet to be implemented.-->
-<!-- bars-->
 <html>
     <!--HEAD OF PAGE-->
     <head>
@@ -25,7 +19,7 @@
             SacCares
         </h1>
         <img src="Frontend\Assets\sacstatelogo.jpg" alt="Sac State Logo" style="position: relative; left: 10%; max-width: 80%;">
-
+        <!--Side Buttons-->
         <div style = "position: relative; top: 5%; left: 10%; height: 8%; max-width: 80%; background: #20B7F7; border-radius: 7px;">
             <h1 class="body-text-highlighted" style="position: relative; top: 35%; left: 40%; font-family: Inter;">
                 <b>Home</b>
@@ -62,6 +56,7 @@
 
     </div>
 
+    <!--Start of Top Panel including About Us and Sign In.-->
     <div style="position: absolute; top: 0px; left: 20%; right: 0%; background-color: #ffffff; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.23); border-bottom: 2px black solid;">
         <h1 class="blue-header" style="position: relative; left: 2%; text-align: left; font-family: Inter;">
             Welcome to SacCares!
@@ -80,6 +75,22 @@
         </div>
     </div>
 
+    <!--Start of Middle Section including tower bridge pic and message.-->
+    <!--Include picture of Tower Bridge-->
     <img src="Frontend\Assets\towerbridge.jpg" style="position: absolute; left: 21.3%; top: 14%; width: 77.6%; max-height: 80%; border-radius: 10px;">
+    <!--Message Section-->
+    <div
+        style="position: absolute; top: 29%; left: 71%; height: 40%; width: 20%; background: rgba(254.99, 254.99, 254.99, 0.20); backdrop-filter: blur(5.90px);">
+    </div>
+    <div style="position: absolute; top: 30%; left: 70%; height: 40%; width: 20%; background: rgba(254.99, 254.99, 254.99, 0.35); backdrop-filter: blur(5.90px);">
+        <h1 class="green-header" style="position: relative; top: 8%; left: 8%; font-family: Lato;">
+            We’re Here To Help
+        </h1>
+        <p class="body-text" style="position: relative; top: 8%; left: 8%; max-width: 90%;">
+            SacCares is a website dedicated to helping those in the Sacramento area who are experiencing homelessness find the
+            resources they need to thrive. We can help you find shelters, healthcare, and other vital resources that you and your
+            family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.
+        </p>
+    </div>
 
 </html>

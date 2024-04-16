@@ -16,18 +16,17 @@ html {
 }
 /*Font Family: Lato, added in html.*/
 .green-header {
-    text-indent: 3em;
     color: #36453B;
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 26px;
+    text-align: left;
     word-wrap: break-word
 }
 /*Font Family: Inter, added in html.*/
 .body-text {
     text-align: left;
     color: #000000;
-    font-size: 20px;
-    word-wrap: break-word
+    font-size: 18px;
+    word-wrap: b
 }
 /*Font Family: Inter, added in html.*/
 .blue-body-text {
@@ -42,20 +41,4 @@ html {
     color: #ffffff;
     font-size: 20px;
     word-wrap: break-word
-}
-
-.tower-bridge {
-    position: absolute;
-    top: 40px;
-    left: 50px;
-    width: 1475px;
-    height: 700px;
-    border-radius: 15px;
-}
-
-.sac-logo {
-    position: relative;
-    top: 80px;
-    left: 20px;
-    max-width: 250px;
 }
