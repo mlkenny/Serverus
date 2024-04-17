@@ -10,14 +10,14 @@ html {
 .blue-header {
     text-align: center;
     color: #20B7F7;
-    font-size: 38px;
+    font-size: 2rem;
     font-weight: bolder;
     word-wrap: break-word
 }
 /*Font Family: Lato, added in html.*/
 .green-header {
     color: #36453B;
-    font-size: 26px;
+    font-size: 1.5rem;
     text-align: left;
     word-wrap: break-word
 }
@@ -25,20 +25,20 @@ html {
 .body-text {
     text-align: left;
     color: #000000;
-    font-size: 18px;
-    word-wrap: b
+    font-size: 1rem;
+    word-wrap: break-word
 }
 /*Font Family: Inter, added in html.*/
 .blue-body-text {
     text-align: center;
     color: #20B7F7;
-    font-size: 18px;
+    font-size: 1rem;
     word-wrap: break-word
 }
 /*Font Family: Inter, added in html.*/
 .body-text-highlighted {
     text-align: left;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 1rem;
     word-wrap: break-word
 }
