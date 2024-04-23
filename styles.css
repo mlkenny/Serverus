@@ -46,4 +46,11 @@ html {
     text-align: right;
     color: #20B7F7;
     font-size: 15px;
+    font-weight: bolder;
+}
+
+.g-signin2 {
+    position: relative;
+    top: 75%;
+    left: 39%;
 }
