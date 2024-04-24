@@ -10,7 +10,7 @@ html {
 .blue-header {
     text-align: center;
     color: #20B7F7;
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bolder;
     word-wrap: break-word
 }
@@ -25,20 +25,41 @@ html {
 .body-text {
     text-align: left;
     color: #000000;
-    font-size: 1rem;
+    font-size: 1.5rem;
     word-wrap: break-word
 }
 /*Font Family: Inter, added in html.*/
 .blue-body-text {
     text-align: center;
     color: #20B7F7;
-    font-size: 1rem;
+    font-size: 1.4rem;
     word-wrap: break-word
 }
 /*Font Family: Inter, added in html.*/
 .body-text-highlighted {
     text-align: left;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 1.5rem;
     word-wrap: break-word
+}
+.passForgot{
+    text-align: right;
+    color: #20B7F7;
+    font-size: 15px;
+    font-weight: bolder;
+}
+
+.g-signin2 {
+    position: relative;
+    top: 550px;
+    left: 42%;
+}
+.button {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 7px;
+    border-color: lightgrey;
+    cursor: pointer;
 }
