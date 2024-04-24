@@ -13,9 +13,7 @@ async function initMap() {
 initMap();
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'YOUR_API_KEY_HERE'; // Input your API key here.
-
-
+const apiKey = 'Input your API key here'; // Input your API key here.
 
 document.getElementById('zip-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -31,7 +29,6 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
     }
   
     zipCodeError.style.visibility = 'hidden';
-  
 
     var textQuerySearch = `homeless shelters in ${zipCode}`;
     fetch(apiUrl, {
@@ -39,7 +36,7 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
         headers: {
             'Content-Type': 'application/json',
             'X-Goog-Api-Key': apiKey,
-            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress'
+            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri'
         },
         body: JSON.stringify({textQuery: textQuerySearch})
   })
@@ -97,6 +94,16 @@ function displayShelters(shelters) {
         // Append the name and address paragraphs to the list item
         listItem.appendChild(nameParagraph);
         listItem.appendChild(addressParagraph);
+
+        if (shelter.websiteUri) {
+            let websitePara = document.createElement('p');
+            let websiteLink = document.createElement('a');
+            websiteLink.textContent = 'Website';
+            websiteLink.title = 'Visit Website';
+            websiteLink.href = shelter.websiteUri;
+            websitePara.appendChild(websiteLink);
+            listItem.appendChild(websitePara);
+        }
 
         // Append the list item to the shelter list
         shelterList.appendChild(listItem);
