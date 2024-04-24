@@ -13,7 +13,7 @@ async function initMap() {
 initMap();
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'AIzaSyAyNBoxRJKjiYgvnJGhYwvG-eEkso7N-eg'; 
+const apiKey = 'YOUR_API_KEY_HERE'; // Input your API key here.
 
 
 
