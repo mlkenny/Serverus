@@ -32,8 +32,8 @@ ObjectId resourceId;
             //be directly type casted into a String or Int! See getID() for that.
         resourceId = temp.getObjectId("_id");
     }
-    public Resource(MongoCursor<Document> traceOn){
-        Document temp = traceOn.next();
+    public Resource(FindIterable<Document> traceOn){
+        Document temp = traceOn.cursor().next();
         resourceId = temp.getObjectId("_id");
     }
     public String getResource(){

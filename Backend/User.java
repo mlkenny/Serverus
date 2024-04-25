@@ -17,10 +17,10 @@ import com.mongodb.client.model.Projections;
 import com.mongodb.client.model.Updates;
 
 public class User {
-    ObjectId userID;
+        ObjectId userID;
         boolean LoggedIn;
         
-        ArrayList<Location> locations;
+        ArrayList<Location> locations = new ArrayList<Location>();
 
             //Creates a connection to the Client, the specific database, and the collection 
         MongoClient mongoClient = MongoClients.create("mongodb+srv://AdminUser:3HeadsBetter1Head@serverus.iesu5ia.mongodb.net/");
@@ -44,14 +44,17 @@ public class User {
             System.out.println(test.getPassword());
 
                 //Tests the saveLocation function. WORKS
-            test.saveLocation("shelter", "U.N Owen", "10148 Frank Greg Way", "11111111", "Certainly a place.");
-            test.saveLocation("healthcare", "Feel Better", "69420 Hahaha Road", "2222222", "Certainly a place.");
+            test.savePlace("shelter", "U.N Owen", "10148 Frank Greg Way", "11111111", "Certainly a place.");
+            test.savePlace("healthcare", "Feel Better", "69420 Hahaha Road", "2222222", "Certainly a place.");
                 
-                //Tests the general getLocations function. WORKS
-            System.out.println(test.getLocations());
+                //Tests the general getPlaces function. WORKS
+            System.out.println(test.getPlaces());
                 
-                //Tests the specific getLocations function. DOESN'T WORK YET
-            System.out.println("\n" + test.getLocations("shelter"));
+                //Tests the specific getPlaces function. WORKS
+            System.out.println("\n" + test.getPlaces("shelter"));
+            
+                //Tests on adding shelters in the database to the User
+            test.savePlace("shelter", "U.N Owen", "10148 Frank Greg Way", "11111111", "Certainly a place.");
         }
 
         public User(String email, String password){
