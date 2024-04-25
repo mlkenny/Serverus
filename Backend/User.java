@@ -1,5 +1,7 @@
 package Backend;
 
+import java.util.ArrayList;
+
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
@@ -17,6 +19,8 @@ import com.mongodb.client.model.Updates;
 public class User {
     ObjectId userID;
         boolean LoggedIn;
+        
+        ArrayList<Location> locations;
 
             //Creates a connection to the Client, the specific database, and the collection 
         MongoClient mongoClient = MongoClients.create("mongodb+srv://AdminUser:3HeadsBetter1Head@serverus.iesu5ia.mongodb.net/");
@@ -130,6 +134,43 @@ public class User {
                 return temp.getString("password");
             }
         }
+        
+        //Playing with locations 
+        public void savePlace(String type, String name, String address, String phone, String description){
+                //A new document with all the data on the location to be saved
+                Document newDocument = new Document();
+                newDocument.put("name", name);
+                newDocument.put("type", type);
+                newDocument.put("address", address);
+                newDocument.put("phone", phone);
+                newDocument.put("description", description);
+
+                Location location = new Location(newDocument, type);
+                locations.add(location);
+        }
+        public String getPlaces(){
+
+            String places = "";
+
+            for (int n = 0; n < locations.size(); n++)
+            {
+                places += locations.get(n).getLocation() + "\n\n";
+            }
+
+            return places;
+        }
+        public String getPlaces(String types){
+
+            String places = "";
+
+            for (int n = 0; n < locations.size(); n++)
+            {
+                if (locations.get(n).type == types)
+                    places += locations.get(n).getLocation() + "\n\n";
+            }
+
+            return places;
+        }
 
         //Extras?
         public void saveLocation(String type, String name, String address, String phone, String description){
@@ -173,6 +214,8 @@ public class User {
 
             return collection.find(filter).projection(projection).first().toString();
         }
+
+        
     /*<- REMOVE THIS WHEN READY TO IMPLEMENT
     // searchEmployment Method: Should return the possible employment opportunities based off the given keywords. 
     //                          Keywords should be given through user input in a text box. (js, html interaction)
