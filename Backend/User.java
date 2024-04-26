@@ -3,7 +3,6 @@ package Backend;
 import java.util.ArrayList;
 
 import org.bson.Document;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 
 import com.mongodb.client.FindIterable;
@@ -12,9 +11,6 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.Projections;
-import com.mongodb.client.model.Updates;
 
 public class User {
         ObjectId userID;
@@ -138,18 +134,32 @@ public class User {
             }
         }
         
-        //Playing with locations 
-        public void savePlace(String type, String name, String address, String phone, String description){
+            //Playing with locations 
+        public boolean savePlace(String type, String name, String address, String phone, String description){
                 //A new document with all the data on the location to be saved
-                Document newDocument = new Document();
-                newDocument.put("name", name);
-                newDocument.put("type", type);
-                newDocument.put("address", address);
-                newDocument.put("phone", phone);
-                newDocument.put("description", description);
+            Document newDocument = new Document();
+            newDocument.put("name", name);
+            newDocument.put("type", type);
+            newDocument.put("address", address);
+            newDocument.put("phone", phone);
+            newDocument.put("description", description);
+            Location location = new Location(newDocument, type);
 
-                Location location = new Location(newDocument, type);
+            if (checkUnique(location)){
                 locations.add(location);
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        public boolean checkUnique(Location location){
+            for (int n = 0; n < locations.size(); n++){
+                if (location.getId() == locations.get(n).getId())
+                    return false;
+            }
+
+            return true;
         }
         public String getPlaces(){
 
@@ -174,76 +184,19 @@ public class User {
 
             return places;
         }
-
-        //Extras?
-        public void saveLocation(String type, String name, String address, String phone, String description){
-            
-                //Creates a Bson filter. in this case, key equal to "_id" and a value equal to the userID
-            Bson filter = Filters.eq("_id", userID);
-            
-                //A new document with all the data on the location to be saved
-            Document newDocument = new Document();
-            newDocument.put("name", name);
-            newDocument.put("type", type);
-            newDocument.put("address", address);
-            newDocument.put("phone", phone);
-            newDocument.put("description", description);
-        
-                //
-            Bson update = Updates.push("Locations", newDocument);
-
-            collection.findOneAndUpdate(filter, update);
+        public void removePlace(String name){
+            for (int n = 0; n < locations.size(); n++)
+            {
+                if (name == locations.get(n).getName())
+                    locations.remove(n);
+            }
         }
-
-        public String getLocations()
-        {
-                //Filters nothing (ie returns everything)
-            Bson filter = Filters.empty();
-                //Tells it to project any field that's labeled "Locations", and exclude the ObjectID when projecting
-            Bson projection = Projections.fields(Projections.include("Locations"), Projections.excludeId());
-
-                //Returns the list of all saved locations
-                //NOTE: .find() returns a data type of FindIterable<Document>. You have to use something like .first()
-                //to make that a Document, then use something like .toString() to make it a String
-            return collection.find(filter).projection(projection).first().toString();
-        }
-            //FIX!
-        public String getLocations(String type)
-        {
-            
-            Bson filter = Filters.type("type",type);
-                //Tells it to project any field that's labeled "Locations", and exclude the ObjectID when projecting
-            Bson projection = Projections.fields(Projections.include("Locations"), Projections.excludeId());
-
-            return collection.find(filter).projection(projection).first().toString();
-        }
-
         
     /*<- REMOVE THIS WHEN READY TO IMPLEMENT
-    // searchEmployment Method: Should return the possible employment opportunities based off the given keywords. 
-    //                          Keywords should be given through user input in a text box. (js, html interaction)
+    searchEmployment Method: Should return the possible employment opportunities based off the given keywords. 
+                             Keywords should be given through user input in a text box. (js, html interaction)
 
-    // searchEmployement and searchResources return type may be subject to change to different object if needed.
-    public String[] searchEmployment(String[] keywords) {
-
-    }
-
-    // searchResources Method: Return keyword search matches based on given user input in a text box.
-    //                         This method should be capable of searching through all kinds of resources.
-    //                         eg. Healthcare, Shelters, Food Banks.
-    public String[] searchResources(String[] keywords) {
-
-    }
-
-    // saveLocation Method: Allow the user to save specific locations based on if the user selects the star icon.
-    //                      Saved locations should be stored in the database under the user's ID.
-    public void saveLocations() {
-
-    }
-
-    // submitFeedback Method: Is this necessary at this point with a dedicated feedback page?
-    public void submitFeedback() {
-
-    }
-    REMOVE THIS WHEN READY TO IMPLEMENT ->*/
+    searchEmployement and searchResources return type may be subject to change to different object if needed.
+    public String[] searchEmployment(String[] keywords) {}
+    */
 }

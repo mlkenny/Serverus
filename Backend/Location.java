@@ -1,6 +1,7 @@
 package Backend;
 
 import org.bson.Document;
+import org.bson.types.ObjectId;
 
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoClient;
@@ -31,4 +32,11 @@ public class Location {
     public String getLocation(){
        return resource.getResource();
     }
+    public ObjectId getId(){
+        return resource.resourceId;
+    }
+    public String getName(){
+        return resource.getName();
+    }
+    
 }
