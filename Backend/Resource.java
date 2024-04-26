@@ -12,7 +12,7 @@ import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 public class Resource {
 
-ObjectId resourceId;
+    ObjectId resourceId;
 
     MongoClient mongoClient = MongoClients.create("mongodb+srv://AdminUser:3HeadsBetter1Head@serverus.iesu5ia.mongodb.net/");
     MongoDatabase database = mongoClient.getDatabase("ServerusDatabase");
@@ -43,5 +43,13 @@ ObjectId resourceId;
                 Document temp = cursorIterator.next();
                 return temp.toString();
             }
+    }
+    public String getName(){
+        Document searchQuery = new Document("_id", resourceId);
+        FindIterable<Document> cursor = collection.find(searchQuery);
+        try (final MongoCursor<Document> cursorIterator = cursor.cursor()) {
+            Document temp = cursorIterator.next();
+            return temp.getString("name");
+        }
     }
 }
