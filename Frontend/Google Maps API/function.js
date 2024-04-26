@@ -85,6 +85,48 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
   .catch(error => {
       console.error('Error:', error);
   });
+
+  var textQuerySearch = `food banks in ${zipCode}`;
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': apiKey,
+            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
+        },
+        body: JSON.stringify({textQuery: textQuerySearch})
+  })
+  .then(response => {
+      console.log('Response status code:', response.status); // Log the status code
+      return response.json()})
+  .then(data => {
+      // Process the response data and update the UI accordingly
+      displayFoodBanks(data);
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
+
+  var textQuerySearch = `hospitals in ${zipCode}`;
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': apiKey,
+            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
+        },
+        body: JSON.stringify({textQuery: textQuerySearch})
+  })
+  .then(response => {
+      console.log('Response status code:', response.status); // Log the status code
+      return response.json()})
+  .then(data => {
+      // Process the response data and update the UI accordingly
+      displayHealthcare(data);
+  })
+  .catch(error => {
+      console.error('Error:', error);
+  });
 });
   
 function displayShelters(shelters) {
@@ -147,6 +189,7 @@ function displayShelters(shelters) {
             listItem.appendChild(websitePara);
         }
 
+        // Button used to favorite 
         var button = document.createElement('button');
         button.textContent = 'Save as Favorite';
         button.addEventListener('click', function() {
@@ -157,5 +200,153 @@ function displayShelters(shelters) {
 
         // Append the list item to the shelter list
         shelterList.appendChild(listItem);
+    });
+}
+
+function displayFoodBanks(food) {
+    // Get the shelter list element from the HTML
+    var foodList = document.getElementById('food-banks');
+        
+    // Clear any previous results
+    foodList.innerHTML = '';
+    
+    // Check if shelters is an object
+    if (typeof food !== 'object' || food === null) {
+        foodList.innerHTML = '<li>Error: Invalid data format</li>';
+        return;
+    }
+
+    // Access the 'places' array within the object
+    var places = food.places;
+
+    // Check if there are any shelters returned
+    if (places.length === 0) {
+        foodList.innerHTML = '<li>No Food Banks found nearby</li>';
+        return;
+    }
+
+    createMarker(places);
+    // Iterate through each shelter object in the 'places' array
+    places.forEach(function(food) {
+        // Create a list item element
+        var listItem = document.createElement('li');
+
+        // Extract displayName and formattedAddress from shelter object
+        var displayName = food.displayName.text; // Access the 'text' property inside 'displayName'
+        var formattedAddress = food.formattedAddress;
+        var nationalPhoneNumber = food.nationalPhoneNumber;
+
+        // Create a paragraph element to display the shelter name
+        var nameParagraph = document.createElement('p');
+        nameParagraph.textContent = `Name: ${displayName}`;
+
+        // Create a paragraph element to display the shelter address
+        var addressParagraph = document.createElement('p');
+        addressParagraph.textContent = `Address: ${formattedAddress}`;
+
+        // Create a paragraph element to display the national phone number
+        var phoneParagraph = document.createElement('p');
+        phoneParagraph.textContent = `Phone Number: ${nationalPhoneNumber}`;
+
+        // Append the name and address paragraphs to the list item
+        listItem.appendChild(nameParagraph);
+        listItem.appendChild(addressParagraph);
+        listItem.appendChild(phoneParagraph);
+
+        if (food.websiteUri) {
+            let websitePara = document.createElement('p');
+            let websiteLink = document.createElement('a');
+            websiteLink.textContent = 'Website';
+            websiteLink.title = 'Visit Website';
+            websiteLink.href = food.websiteUri;
+            websitePara.appendChild(websiteLink);
+            listItem.appendChild(websitePara);
+        }
+
+        // Button used to favorite 
+        var button = document.createElement('button');
+        button.textContent = 'Save as Favorite';
+        button.addEventListener('click', function() {
+            // Add functionality to the button here
+            alert(`${displayName} is favorited.`);
+        });
+        listItem.appendChild(button);
+
+        // Append the list item to the shelter list
+        foodList.appendChild(listItem);
+    });
+}
+
+function displayHealthcare(healthCareCenters) {
+    // Get the shelter list element from the HTML
+    var healthcareList = document.getElementById('healthcare-centers');
+        
+    // Clear any previous results
+    healthcareList.innerHTML = '';
+    
+    // Check if shelters is an object
+    if (typeof healthCareCenters !== 'object' || healthCareCenters === null) {
+        healthcareList.innerHTML = '<li>Error: Invalid data format</li>';
+        return;
+    }
+
+    // Access the 'places' array within the object
+    var places = healthCareCenters.places;
+
+    // Check if there are any shelters returned
+    if (places.length === 0) {
+        healthcareList.innerHTML = '<li>No Health Care Centers found nearby</li>';
+        return;
+    }
+
+    createMarker(places);
+    // Iterate through each shelter object in the 'places' array
+    places.forEach(function(healthCareCenters) {
+        // Create a list item element
+        var listItem = document.createElement('li');
+
+        // Extract displayName and formattedAddress from shelter object
+        var displayName = healthCareCenters.displayName.text; // Access the 'text' property inside 'displayName'
+        var formattedAddress = healthCareCenters.formattedAddress;
+        var nationalPhoneNumber = healthCareCenters.nationalPhoneNumber;
+
+        // Create a paragraph element to display the shelter name
+        var nameParagraph = document.createElement('p');
+        nameParagraph.textContent = `Name: ${displayName}`;
+
+        // Create a paragraph element to display the shelter address
+        var addressParagraph = document.createElement('p');
+        addressParagraph.textContent = `Address: ${formattedAddress}`;
+
+        // Create a paragraph element to display the national phone number
+        var phoneParagraph = document.createElement('p');
+        phoneParagraph.textContent = `Phone Number: ${nationalPhoneNumber}`;
+
+        // Append the name and address paragraphs to the list item
+        listItem.appendChild(nameParagraph);
+        listItem.appendChild(addressParagraph);
+        listItem.appendChild(phoneParagraph);
+
+        if (healthCareCenters.websiteUri) {
+            let websitePara = document.createElement('p');
+            let websiteLink = document.createElement('a');
+            websiteLink.textContent = 'Website';
+            websiteLink.title = 'Visit Website';
+            websiteLink.href = healthCareCenters.websiteUri;
+            websitePara.appendChild(websiteLink);
+            listItem.appendChild(websitePara);
+        }
+
+        // Button used to favorite 
+        var button = document.createElement('button');
+        button.textContent = 'Save as Favorite';
+        button.addEventListener('click', function() {
+            // Add functionality to the button here
+            alert(`${displayName} is favorited.`);
+        });
+        listItem.appendChild(button);
+
+        // Append the list item to the shelter list
+        healthcareList.appendChild(listItem);
     });
 }
