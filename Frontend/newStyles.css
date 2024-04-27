@@ -291,3 +291,9 @@ input[type="text"]::placeholder {
     text-align: center;
     font-family: Inter;
 }
+
+/* Employment Classes and ID's */
+.row {
+    position: relative;
+    top: 0vh;
+}

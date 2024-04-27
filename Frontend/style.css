@@ -150,6 +150,17 @@ body {
 	font-weight: bold;
 	color: #36453B;
 }
+.col-lg-6 {
+	position: absolute;
+	width: 30vw;
+	top: -10vh;
+}
+.col-lg-7 {
+	position: relative;
+	width: 35vw;
+	left: 31vw;
+	top: -10vh;
+}
 
 /*LEFT SEARCH LIST*/
 .search-list-left {
