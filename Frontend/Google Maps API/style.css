@@ -17,3 +17,23 @@
   #zipcodeCheck {
     visibility: hidden;
   }
+
+  /* Default button style */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Style when button is clicked */
+button:active {
+  background-color: #0056b3;
+}
+
+/* Additional style for clicked button */
+button.clicked {
+  background-color: #28a745;
+}

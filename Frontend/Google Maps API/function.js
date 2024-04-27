@@ -48,7 +48,7 @@ async function createMarker(places) {
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'AIzaSyAxNgG2C3ej4nYI40AFw1kCuCz8UQcAHaw'; // Input your API key here.
+const apiKey = 'INPUT KEY'; // Input your API key here.
 
 document.getElementById('zip-form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -101,7 +101,7 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
             displayShelters(data);
         } else if (currentPage.includes('food-banks')) {
             displayFoodBanks(data);
-        } else if (currentPage.includes('hospitals')) {
+        } else if (currentPage.includes('Front')) {
             displayHealthcare(data);
         } else {
             // Handle default response
