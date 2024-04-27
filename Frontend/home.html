@@ -8,6 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
         <link rel="stylesheet" href="newStyles.css">
         <script src="buttons.js"></script>
+        <script src="google_script.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="104764457753-urb7g80r6oq3j72stn66q0ooks96h7l6.apps.googleusercontent.com">
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
@@ -20,35 +23,35 @@
             </h1>
             <img src="Assets\sacstatelogo.jpg" alt="Sac State Logo" id="sac-logo">
 
-            <button class="side-button" id="active-button" type="submit" onclick="toHomeSO()">
+            <button class="side-button" id="active-button" type="submit" onclick="toHome()">
                 <img src="Assets\homevector.svg" alt="Home Vector" class="vector" id="active-vector">
                 <h1 class="side-button-text">
                     Home
                 </h1>
             </button>
 
-            <button class="side-button" id="side-button" type="submit" onclick="toSearchSO()">
+            <button class="side-button" id="side-button" type="submit" onclick="toSearch()">
                 <img src="Assets\searchvector.svg" alt="Search Vector" class="vector">
                 <h1 class="side-button-text">
                     Search
                 </h1>
             </button>
 
-            <button class="side-button" id="side-button" type="submit" onclick="toEmploymentSO()">
+            <button class="side-button" id="side-button" type="submit" onclick="toEmployment()">
                 <img src="Assets\employmentvector.svg" alt="Employment Vector" class="vector">
                 <h1 class="side-button-text">
                     Employment
                 </h1>
             </button>
 
-            <button class="side-button" id="side-button" type="submit" onclick="toResourcesSO()">
+            <button class="side-button" id="side-button" type="submit" onclick="toResources()">
                 <img src="Assets\resourcesvector.svg" alt="Resource Vector" class="vector">
                 <h1 class="side-button-text">
                     Resources
                 </h1>
             </button>
 
-            <button class="side-button" id="side-button" type="submit" onclick="toFAQSO()">
+            <button class="side-button" id="side-button" type="submit" onclick="toFAQ()">
                 <img src="Assets\faqvector.svg" alt="FAQ Vector" class="vector">
                 <h1 class="side-button-text">
                     FAQ
@@ -61,13 +64,13 @@
                 Welcome to SacCares!
             </h1>
 
-            <button class="top-button" id="about-button" type="submit" onclick="toAboutUsSO()">
+            <button class="top-button" id="about-button" type="submit" onclick="toAboutUs()">
                 <h1 class="top-button-text">
                     About Us
                 </h1>
             </button>
 
-            <button class="top-button" id="sign-in-button" type="submit" onclick="onSignOut()">
+            <button class="top-button" id="sign-in-button" type="submit" onclick="signOut()">
                 <h1 class="top-button-text">
                     Sign Out
                 </h1>

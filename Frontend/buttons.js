@@ -1,8 +1,5 @@
 // Functions below are for linking pages when the user IS signed in.
 // This means the sign in button is now the sign out button.
-function toIndex() {
-    window.location.href = 'index.html'
-}
 function toHome() {
     window.location.href = 'home.html'
 }
@@ -53,7 +50,4 @@ function toSignIn() {
 }
 function toSignUp() {
     window.location.href = 'signup.html'
-}
-function onSignOut() {
-    toIndex();
 }

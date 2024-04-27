@@ -14,13 +14,13 @@ body {
 /* Containers */
 #side-container {
     position: static;
-    min-width: 23vw;
+    min-width: 30vw;
     min-height: 100vh;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 #top-container {
     position: relative;
-    min-width: 77vw;
+    min-width: 70vw;
     max-height: 10vh;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
 }
@@ -96,27 +96,36 @@ body {
 }
 #about-button {
     position: relative;
-    left: 25vw;
+    left: 21vw;
     bottom: 8vh;
+}
+#active-about-button {
+    position: relative;
+    left: 21vw;
+    bottom: 8vh;
+    font-weight: bolder;
+    background-color: #20B7F7;
+    color: white;
 }
 #sign-in-button {
     position: relative;
-    left: 34vw;
+    left: 30vw;
     bottom: 15vh;
 }
 
 /* Text Classes and ID's */
 .title-header {
-    position: static;
+    position: relative;
     margin-bottom: 0px;
-    font-size: 3em;
-    text-align: center;
+    font-size: 4em;
+    text-align: left;
+    left: 8vw;
     color: #20B7F7;
     font-weight: bolder;
 }
 #title {
-    position: relative;
-    left: -20vw;
+    font-size: 3em;
+    left: 2vw;
     top: -1vh;
 }
 #welcome-message {
@@ -164,7 +173,7 @@ body {
 #sac-logo {
     position: relative;
     max-width: 18vw;
-    left: 2.5vw;
+    left: 5.5vw;
 }
 .vector {
     display: block;
@@ -238,7 +247,7 @@ body {
     position: relative;
     top: -75vh;
     left: 30vw;
-    width: 40vw;
+    width: 35vw;
     height: 4vh;
     border-color: white;
     border-radius: 7px;
@@ -248,6 +257,7 @@ body {
     position: relative;
     font-weight: bolder;
     background-color: #20B7F7;
+    border-color: #20B7F7;
     color: white;
 }
 .tab-button {
@@ -258,7 +268,7 @@ body {
     left: 6vw;
     top: 3vh;
     border-radius: 7px;
-    background-color: #F4F4F4;
+    border-color: #F4F4F4;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
 }
