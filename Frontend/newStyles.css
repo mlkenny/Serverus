@@ -261,6 +261,11 @@ body {
     border-radius: 7px;
     background-color: #F4F4F4;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+.tab-button:hover {
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.50);
 }
 .tab-text {
     padding-top: 1vh;
