@@ -146,6 +146,7 @@ body {
     display: block;
     text-align: left;
     padding: 0px;
+    padding-top: -1vh;
     margin-top: -1vh;
     margin-left: 6vw;
     font-size: 2em;

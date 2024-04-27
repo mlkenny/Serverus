@@ -29,6 +29,9 @@ function toAboutUs() {
 }
 // Functions below are for links to pages where the user is NOT signed in.
 // This means the sign in and about us buttons exist.
+function toHomeSO() {
+    window.location.href = 'index.html'
+}
 function toSearchSO() {
     window.location.href = 'housingSO.html'
 }
