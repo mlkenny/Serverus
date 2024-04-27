@@ -7,10 +7,15 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
     center: { lat: 38.5816, lng: -121.4944 },
     zoom: 10,
+    mapId: "8a056949708ce337",
   });
 }
 
-initMap();
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize the map dynamically
+    initMap();
+});
+
 
 function loadMarkerLibrary() {
     return new Promise((resolve, reject) => {
@@ -27,13 +32,13 @@ async function createMarker(places) {
         // Load the marker library asynchronously
         const AdvancedMarkerElement = await loadMarkerLibrary();
 
-        console.log(places.location);
-
         // Loop through places and create markers
         places.forEach(place => {
+            console.log("Location:", place.location);
+
             // Ensure the place has a location
-            if (place.location && typeof place.location.lat === 'number' && typeof place.location.lng === 'number') {
-                const position = { lat: place.location.lat, lng: place.location.lng };
+            if (place.location && typeof place.location.latitude === 'number' && typeof place.location.longitude === 'number') {
+                const position = { lat: place.location.latitude, lng: place.location.longitude };
                 const marker = new AdvancedMarkerElement({
                     position: position,
                     map: map,
@@ -45,6 +50,7 @@ async function createMarker(places) {
         console.error("Error creating markers:", error);
     }
 }
+
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
