@@ -96,12 +96,12 @@ body {
 }
 #about-button {
     position: relative;
-    left: 21vw;
+    left: 25vw;
     bottom: 8vh;
 }
 #sign-in-button {
     position: relative;
-    left: 30vw;
+    left: 34vw;
     bottom: 15vh;
 }
 
