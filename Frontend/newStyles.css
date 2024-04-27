@@ -216,6 +216,11 @@ body {
     left: 18.6vw;
     top: 7vh;
 }
+.star:hover {
+    cursor: pointer;
+    background-color: whitesmoke;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+}
 #keyword-vector {
     position: absolute;
     width: 1.5vw;
