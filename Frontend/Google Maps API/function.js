@@ -27,15 +27,24 @@ function loadMarkerLibrary() {
     });
 }
 
+let markers = [];
+
 async function createMarker(places) {
     try {
         // Load the marker library asynchronously
         const AdvancedMarkerElement = await loadMarkerLibrary();
 
+        // Remove existing markers
+        markers.forEach(marker => {
+            marker.setMap(null); // Remove the marker from the map
+        });
+        markers = []; // Clear the markers array
+
+        // Define bounds to include all markers
+        const bounds = new google.maps.LatLngBounds();
+
         // Loop through places and create markers
         places.forEach(place => {
-            console.log("Location:", place.location);
-
             // Ensure the place has a location
             if (place.location && typeof place.location.latitude === 'number' && typeof place.location.longitude === 'number') {
                 const position = { lat: place.location.latitude, lng: place.location.longitude };
@@ -44,8 +53,19 @@ async function createMarker(places) {
                     map: map,
                     title: place.name
                 });
+                markers.push(marker); // Add the marker to the markers array
+
+                // Extend bounds to include this marker
+                bounds.extend(position);
             }
-        });        
+        });
+
+        // Fit map to bounds to zoom to the searched location
+        map.fitBounds(bounds);
+        
+        // Set max zoom level to prevent zooming in too much if only one marker
+        const maxZoom = 15;
+        map.setOptions({ maxZoom: maxZoom });
     } catch (error) {
         console.error("Error creating markers:", error);
     }
@@ -53,38 +73,47 @@ async function createMarker(places) {
 
 
 
-const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'INPUT KEY'; // Input your API key here.
 
-document.getElementById('zip-form').addEventListener('submit', function(event) {
+const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
+const apiKey = 'INPUT API HERE'; // Input your API key here.
+
+document.getElementById('location-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    var zipCode = document.getElementById('zipcode').value;
-    var zipCodeError = document.getElementById('zipcodeCheck');
+    var location = document.getElementById('location').value;
+    // Regular expression patterns for city, state, and zip code validation
+    var cityStatePattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+    var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+    var locationError = document.getElementById('locationCheck');
     var hasError = false; // Boolean variable to track the error status
 
     // Error checking
-    if (zipCode.length != 5 || isNaN(zipCode)) { // isNaN() returns true if there are any letters in the parameters
+    if (!cityStatePattern.test(location) && !zipCodePattern.test(location)) { 
         hasError = true;
-        zipCodeError.style.visibility = 'visible';
+        locationError.style.visibility = 'visible';
         return;
     }
 
-    zipCodeError.style.visibility = 'hidden';
+    locationError.style.visibility = 'hidden';
 
     // Get the current page URL or any other identifier
     var currentPage = window.location.href;
 
+    // Pages for search
+    var housing = 'housing';
+    var health = 'health';
+    var food = 'food';
+
     // Define the textQuerySearch based on the current page
     var textQuerySearch;
-    if (currentPage.includes('shelters')) {
-        textQuerySearch = `homeless shelters in ${zipCode}`;
-    } else if (currentPage.includes('food-banks')) {
-        textQuerySearch = `food banks in ${zipCode}`;
-    } else if (currentPage.includes('hospitals')) {
-        textQuerySearch = `hospitals in ${zipCode}`;
+    if (currentPage.includes(housing)) {
+        textQuerySearch = `homeless shelters in ${location}`;
+    } else if (currentPage.includes(food)) {
+        textQuerySearch = `food banks in ${location}`;
+    } else if (currentPage.includes(health)) {
+        textQuerySearch = `hospitals in ${location}`;
     } else {
         // Default to a generic search if the page doesn't match any specific criteria
-        textQuerySearch = `services in ${zipCode}`;
+        textQuerySearch = `services in ${location}`;
     }
 
     // Fetch data based on the textQuerySearch
@@ -102,12 +131,12 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
         return response.json();
     })
     .then(data => {
-        // Process the response data and update the UI accordingly based on the current page, must change this depending on the pages set from HTML
-        if (currentPage.includes('shelters')) {
+        // Process the response data and update the UI accordingly based on the current page
+        if (currentPage.includes(housing)) {
             displayShelters(data);
-        } else if (currentPage.includes('food-banks')) {
+        } else if (currentPage.includes(food)) {
             displayFoodBanks(data);
-        } else if (currentPage.includes('Front')) { // For now this is the only one that can be displayed because of testing. 
+        } else if (currentPage.includes(health)) { 
             displayHealthcare(data);
         } else {
             // Handle default response
