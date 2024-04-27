@@ -7,10 +7,15 @@ async function initMap() {
   map = new Map(document.getElementById("map"), {
     center: { lat: 38.5816, lng: -121.4944 },
     zoom: 10,
+    mapId: "8a056949708ce337",
   });
 }
 
-initMap();
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize the map dynamically
+    initMap();
+});
+
 
 function loadMarkerLibrary() {
     return new Promise((resolve, reject) => {
@@ -27,13 +32,13 @@ async function createMarker(places) {
         // Load the marker library asynchronously
         const AdvancedMarkerElement = await loadMarkerLibrary();
 
-        console.log(places.location);
-
         // Loop through places and create markers
         places.forEach(place => {
+            console.log("Location:", place.location);
+
             // Ensure the place has a location
-            if (place.location && typeof place.location.lat === 'number' && typeof place.location.lng === 'number') {
-                const position = { lat: place.location.lat, lng: place.location.lng };
+            if (place.location && typeof place.location.latitude === 'number' && typeof place.location.longitude === 'number') {
+                const position = { lat: place.location.latitude, lng: place.location.longitude };
                 const marker = new AdvancedMarkerElement({
                     position: position,
                     map: map,
@@ -45,6 +50,7 @@ async function createMarker(places) {
         console.error("Error creating markers:", error);
     }
 }
+
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
@@ -96,12 +102,12 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
         return response.json();
     })
     .then(data => {
-        // Process the response data and update the UI accordingly based on the current page
+        // Process the response data and update the UI accordingly based on the current page, must change this depending on the pages set from HTML
         if (currentPage.includes('shelters')) {
             displayShelters(data);
         } else if (currentPage.includes('food-banks')) {
             displayFoodBanks(data);
-        } else if (currentPage.includes('Front')) {
+        } else if (currentPage.includes('Front')) { // For now this is the only one that can be displayed because of testing. 
             displayHealthcare(data);
         } else {
             // Handle default response
@@ -114,44 +120,45 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
 });
 
   
-function displayShelters(shelters) {
-    // Get the shelter list element from the HTML
-    var shelterList = document.getElementById('shelter-list');
+function displayPlaces(places, listElementId, noResultsMessage) {
+    // Get the list element from the HTML
+    var list = document.getElementById(listElementId);
         
     // Clear any previous results
-    shelterList.innerHTML = '';
+    list.innerHTML = '';
     
-    // Check if shelters is an object
-    if (typeof shelters !== 'object' || shelters === null) {
-        shelterList.innerHTML = '<li>Error: Invalid data format</li>';
+    // Check if places is an object
+    if (typeof places !== 'object' || places === null) {
+        list.innerHTML = `<li>Error: Invalid data format</li>`;
         return;
     }
 
     // Access the 'places' array within the object
-    var places = shelters.places;
+    var placesArray = places.places;
 
-    // Check if there are any shelters returned
-    if (places.length === 0) {
-        shelterList.innerHTML = '<li>No shelters found nearby</li>';
+    // Check if there are any places returned
+    if (placesArray.length === 0) {
+        list.innerHTML = `<li>${noResultsMessage}</li>`;
         return;
     }
 
-    createMarker(places);
-    // Iterate through each shelter object in the 'places' array
-    places.forEach(function(shelter) {
+    createMarker(placesArray);
+    
+    // Iterate through each place object in the 'places' array
+    placesArray.forEach(function(place) {
         // Create a list item element
         var listItem = document.createElement('li');
 
-        // Extract displayName and formattedAddress from shelter object
-        var displayName = shelter.displayName.text; // Access the 'text' property inside 'displayName'
-        var formattedAddress = shelter.formattedAddress;
-        var nationalPhoneNumber = shelter.nationalPhoneNumber;
+        // Extract displayName and formattedAddress from place object
+        var displayName = place.displayName.text; // Access the 'text' property inside 'displayName'
+        var formattedAddress = place.formattedAddress;
+        var nationalPhoneNumber = place.nationalPhoneNumber;
 
-        // Create a paragraph element to display the shelter name
+        // Create a paragraph element to display the place name
         var nameParagraph = document.createElement('p');
         nameParagraph.textContent = `Name: ${displayName}`;
 
-        // Create a paragraph element to display the shelter address
+        // Create a paragraph element to display the place address
         var addressParagraph = document.createElement('p');
         addressParagraph.textContent = `Address: ${formattedAddress}`;
 
@@ -164,12 +171,12 @@ function displayShelters(shelters) {
         listItem.appendChild(addressParagraph);
         listItem.appendChild(phoneParagraph);
 
-        if (shelter.websiteUri) {
+        if (place.websiteUri) {
             let websitePara = document.createElement('p');
             let websiteLink = document.createElement('a');
             websiteLink.textContent = 'Website';
             websiteLink.title = 'Visit Website';
-            websiteLink.href = shelter.websiteUri;
+            websiteLink.href = place.websiteUri;
             websitePara.appendChild(websiteLink);
             listItem.appendChild(websitePara);
         }
@@ -183,155 +190,31 @@ function displayShelters(shelters) {
         });
         listItem.appendChild(button);
 
-        // Append the list item to the shelter list
-        shelterList.appendChild(listItem);
+        // Append the list item to the list
+        list.appendChild(listItem);
     });
+}
+
+function displayShelters(shelters) {
+    displayPlaces(
+        shelters, // places data
+        'shelter-list', // ID of the list element
+        'No shelters found nearby' // Message for no results
+    );
 }
 
 function displayFoodBanks(food) {
-    // Get the shelter list element from the HTML
-    var foodList = document.getElementById('food-banks');
-        
-    // Clear any previous results
-    foodList.innerHTML = '';
-    
-    // Check if shelters is an object
-    if (typeof food !== 'object' || food === null) {
-        foodList.innerHTML = '<li>Error: Invalid data format</li>';
-        return;
-    }
-
-    // Access the 'places' array within the object
-    var places = food.places;
-
-    // Check if there are any shelters returned
-    if (places.length === 0) {
-        foodList.innerHTML = '<li>No Food Banks found nearby</li>';
-        return;
-    }
-
-    createMarker(places);
-    // Iterate through each shelter object in the 'places' array
-    places.forEach(function(food) {
-        // Create a list item element
-        var listItem = document.createElement('li');
-
-        // Extract displayName and formattedAddress from shelter object
-        var displayName = food.displayName.text; // Access the 'text' property inside 'displayName'
-        var formattedAddress = food.formattedAddress;
-        var nationalPhoneNumber = food.nationalPhoneNumber;
-
-        // Create a paragraph element to display the shelter name
-        var nameParagraph = document.createElement('p');
-        nameParagraph.textContent = `Name: ${displayName}`;
-
-        // Create a paragraph element to display the shelter address
-        var addressParagraph = document.createElement('p');
-        addressParagraph.textContent = `Address: ${formattedAddress}`;
-
-        // Create a paragraph element to display the national phone number
-        var phoneParagraph = document.createElement('p');
-        phoneParagraph.textContent = `Phone Number: ${nationalPhoneNumber}`;
-
-        // Append the name and address paragraphs to the list item
-        listItem.appendChild(nameParagraph);
-        listItem.appendChild(addressParagraph);
-        listItem.appendChild(phoneParagraph);
-
-        if (food.websiteUri) {
-            let websitePara = document.createElement('p');
-            let websiteLink = document.createElement('a');
-            websiteLink.textContent = 'Website';
-            websiteLink.title = 'Visit Website';
-            websiteLink.href = food.websiteUri;
-            websitePara.appendChild(websiteLink);
-            listItem.appendChild(websitePara);
-        }
-
-        // Button used to favorite 
-        var button = document.createElement('button');
-        button.textContent = 'Save as Favorite';
-        button.addEventListener('click', function() {
-            // Add functionality to the button here
-            alert(`${displayName} is favorited.`);
-        });
-        listItem.appendChild(button);
-
-        // Append the list item to the shelter list
-        foodList.appendChild(listItem);
-    });
+    displayPlaces(
+        food, // places data
+        'food-banks', // ID of the list element
+        'No Food Banks found nearby' // Message for no results
+    );
 }
 
 function displayHealthcare(healthCareCenters) {
-    // Get the shelter list element from the HTML
-    var healthcareList = document.getElementById('healthcare-centers');
-        
-    // Clear any previous results
-    healthcareList.innerHTML = '';
-    
-    // Check if shelters is an object
-    if (typeof healthCareCenters !== 'object' || healthCareCenters === null) {
-        healthcareList.innerHTML = '<li>Error: Invalid data format</li>';
-        return;
-    }
-
-    // Access the 'places' array within the object
-    var places = healthCareCenters.places;
-
-    // Check if there are any shelters returned
-    if (places.length === 0) {
-        healthcareList.innerHTML = '<li>No Health Care Centers found nearby</li>';
-        return;
-    }
-
-    createMarker(places);
-    // Iterate through each shelter object in the 'places' array
-    places.forEach(function(healthCareCenters) {
-        // Create a list item element
-        var listItem = document.createElement('li');
-
-        // Extract displayName and formattedAddress from shelter object
-        var displayName = healthCareCenters.displayName.text; // Access the 'text' property inside 'displayName'
-        var formattedAddress = healthCareCenters.formattedAddress;
-        var nationalPhoneNumber = healthCareCenters.nationalPhoneNumber;
-
-        // Create a paragraph element to display the shelter name
-        var nameParagraph = document.createElement('p');
-        nameParagraph.textContent = `Name: ${displayName}`;
-
-        // Create a paragraph element to display the shelter address
-        var addressParagraph = document.createElement('p');
-        addressParagraph.textContent = `Address: ${formattedAddress}`;
-
-        // Create a paragraph element to display the national phone number
-        var phoneParagraph = document.createElement('p');
-        phoneParagraph.textContent = `Phone Number: ${nationalPhoneNumber}`;
-
-        // Append the name and address paragraphs to the list item
-        listItem.appendChild(nameParagraph);
-        listItem.appendChild(addressParagraph);
-        listItem.appendChild(phoneParagraph);
-
-        if (healthCareCenters.websiteUri) {
-            let websitePara = document.createElement('p');
-            let websiteLink = document.createElement('a');
-            websiteLink.textContent = 'Website';
-            websiteLink.title = 'Visit Website';
-            websiteLink.href = healthCareCenters.websiteUri;
-            websitePara.appendChild(websiteLink);
-            listItem.appendChild(websitePara);
-        }
-
-        // Button used to favorite 
-        var button = document.createElement('button');
-        button.textContent = 'Save as Favorite';
-        button.addEventListener('click', function() {
-            // Add functionality to the button here
-            alert(`${displayName} is favorited.`);
-        });
-        listItem.appendChild(button);
-
-        // Append the list item to the shelter list
-        healthcareList.appendChild(listItem);
-    });
+    displayPlaces(
+        healthCareCenters, // places data
+        'healthcare-centers', // ID of the list element
+        'No Health Care Centers found nearby' // Message for no results
+    );
 }
