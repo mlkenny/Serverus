@@ -200,6 +200,13 @@ body {
     top: 7vh;
     left: -14.5vw;
 }
+.star {
+    position: relative;
+    width: 1vw;
+    left: 18.6vw;
+    top: 4.8vh;
+}
+
 
 /* Resource Classes and ID's */
 #keywords-input {
