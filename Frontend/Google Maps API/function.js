@@ -48,66 +48,40 @@ async function createMarker(places) {
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'AIzaSyCZ7BOs-nUaIYYPGSrXQHtpHE9lBd-Wr-M'; // Input your API key here.
+const apiKey = 'AIzaSyAxNgG2C3ej4nYI40AFw1kCuCz8UQcAHaw'; // Input your API key here.
 
 document.getElementById('zip-form').addEventListener('submit', function(event) {
     event.preventDefault();
     var zipCode = document.getElementById('zipcode').value;
     var zipCodeError = document.getElementById('zipcodeCheck');
     var hasError = false; // Boolean variable to track the error status
-  
+
     // Error checking
     if (zipCode.length != 5 || isNaN(zipCode)) { // isNaN() returns true if there are any letters in the parameters
         hasError = true;
         zipCodeError.style.visibility = 'visible';
         return;
     }
-  
+
     zipCodeError.style.visibility = 'hidden';
 
-    var textQuerySearch = `homeless shelters in ${zipCode}`;
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Goog-Api-Key': apiKey,
-            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
-        },
-        body: JSON.stringify({textQuery: textQuerySearch})
-  })
-  .then(response => {
-      console.log('Response status code:', response.status); // Log the status code
-      return response.json()})
-  .then(data => {
-      // Process the response data and update the UI accordingly
-      displayShelters(data);
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
+    // Get the current page URL or any other identifier
+    var currentPage = window.location.href;
 
-  var textQuerySearch = `food banks in ${zipCode}`;
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Goog-Api-Key': apiKey,
-            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
-        },
-        body: JSON.stringify({textQuery: textQuerySearch})
-  })
-  .then(response => {
-      console.log('Response status code:', response.status); // Log the status code
-      return response.json()})
-  .then(data => {
-      // Process the response data and update the UI accordingly
-      displayFoodBanks(data);
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
+    // Define the textQuerySearch based on the current page
+    var textQuerySearch;
+    if (currentPage.includes('shelters')) {
+        textQuerySearch = `homeless shelters in ${zipCode}`;
+    } else if (currentPage.includes('food-banks')) {
+        textQuerySearch = `food banks in ${zipCode}`;
+    } else if (currentPage.includes('hospitals')) {
+        textQuerySearch = `hospitals in ${zipCode}`;
+    } else {
+        // Default to a generic search if the page doesn't match any specific criteria
+        textQuerySearch = `services in ${zipCode}`;
+    }
 
-  var textQuerySearch = `hospitals in ${zipCode}`;
+    // Fetch data based on the textQuerySearch
     fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -116,18 +90,29 @@ document.getElementById('zip-form').addEventListener('submit', function(event) {
             'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
         },
         body: JSON.stringify({textQuery: textQuerySearch})
-  })
-  .then(response => {
-      console.log('Response status code:', response.status); // Log the status code
-      return response.json()})
-  .then(data => {
-      // Process the response data and update the UI accordingly
-      displayHealthcare(data);
-  })
-  .catch(error => {
-      console.error('Error:', error);
-  });
+    })
+    .then(response => {
+        console.log('Response status code:', response.status); // Log the status code
+        return response.json();
+    })
+    .then(data => {
+        // Process the response data and update the UI accordingly based on the current page
+        if (currentPage.includes('shelters')) {
+            displayShelters(data);
+        } else if (currentPage.includes('food-banks')) {
+            displayFoodBanks(data);
+        } else if (currentPage.includes('hospitals')) {
+            displayHealthcare(data);
+        } else {
+            // Handle default response
+            console.log('Default response');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
+
   
 function displayShelters(shelters) {
     // Get the shelter list element from the HTML
