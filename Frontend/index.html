@@ -1,107 +1,95 @@
 <!DOCTYPE html>
 
 <html>
-    <!--HEAD OF PAGE-->
+<!--HEAD OF PAGE-->
+
     <head>
         <title>SacCares - Home</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <link rel="stylesheet" href="newStyles.css">
         <script src="buttons.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
         <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
     </head>
 
-    <!--Start of the Side Panel, width: 20% height: 100%-->
-    <!--uses absolute position as reference for the rest of the objects.-->
-    <div style="position:absolute; top: 0px; left: 0px; right: 80%; bottom: 0%; background-color: #ffffff; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);">
-        <h1 class="blue-header" style="position: relative; top: 2%; font-family: Roboto Serif;">
-            SacCares
-        </h1>
-        <img src="Assets\sacstatelogo.jpg" alt="Sac State Logo" style="position: relative; left: 10%; max-width: 80%;">
-        <!--Side Buttons-->
-        <div id="home" style = "position: relative; top: 6%; left: 10%; height: 8%; max-width: 80%; background: #20B7F7; border-radius: 7px;">
-            <button class="button" type="submit" onclick="toIndex()" style = "background: #20B7F7;">
-                <h1 class="body-text-highlighted" style="position: relative; left: 40%; font-family: Inter;">
-                    <b>Home</b>
+    <body>
+        <div id="side-container">
+            <h1 class="title-header" style="font-family: Roboto+Serif;">
+                SacCares
+            </h1>
+            <img src="Assets\sacstatelogo.jpg" alt="Sac State Logo" id="sac-logo">
+
+            <button class="side-button" id="active-button" type="submit" onclick="toHomeSO()">
+                <img src="Assets\homevector.svg" alt="Home Vector" class="vector" id="active-vector">
+                <h1 class="side-button-text">
+                    Home
                 </h1>
             </button>
-            <a href="home.html">
-                <img src="Assets\homevector.svg"
-                    style="position: relative; left: 8%; bottom: 75%; width: 12%; filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(216deg) brightness(105%) contrast(106%);">
-            </a>
-        </div>
-        <div id="search" style="position: relative; top: 7%; left: 10%; height: 8%; max-width: 80%; background: #F4F4F4; border-radius: 7px;">
-            <button class="button" type="submit" onclick="toSearchSO()" style="background: #F4F4F4;">
-                <h1 class="body-text" style="position: relative; left: 40%; font-family: Inter;">
-                    <b>Search</b>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toSearchSO()">
+                <img src="Assets\searchvector.svg" alt="Search Vector" class="vector">
+                <h1 class="side-button-text">
+                    Search
                 </h1>
             </button>
-            <img src="Assets\searchvector.svg" style="position: relative; left: 8%; bottom: 75%; width: 12%;">
-        </div>
-        <div id="employment" style="position: relative; top: 8%; left: 10%; height: 8%; max-width: 80%; background: #F4F4F4; border-radius: 7px;">
-            <button class="button" type="submit" onclick="toEmploymentSO()" style="background: #F4F4F4;">
-                <h1 class="body-text" style="position: relative; left: 40%; font-family: Inter;">
-                    <b>Employment</b>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toEmploymentSO()">
+                <img src="Assets\employmentvector.svg" alt="Employment Vector" class="vector">
+                <h1 class="side-button-text">
+                    Employment
                 </h1>
             </button>
-            <img src="Assets\employmentvector.svg" style="position: relative; left: 8%; bottom: 75%; width: 12%;">
-        </div>
-        <div id="resources" style="position: relative; top: 9%; left: 10%; height: 8%; max-width: 80%; background: #F4F4F4; border-radius: 7px;">
-            <button class="button" type="submit" onclick="toResourcesSO()" style="background: #F4F4F4;">
-                <h1 class="body-text" style="position: relative; left: 40%; font-family: Inter;">
-                    <b>Emergency</b>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toResourcesSO()">
+                <img src="Assets\resourcesvector.svg" alt="Resource Vector" class="vector">
+                <h1 class="side-button-text">
+                    Resources
                 </h1>
             </button>
-            <img src="Assets\resourcesvector.svg" style="position: relative; left: 8%; bottom: 80%; width: 12%;">
-        </div>
-        <div id="faq" style="position: relative; top: 10%; left: 10%; height: 8%; max-width: 80%; background: #F4F4F4; border-radius: 7px;">
-            <button class="button" type="submit" onclick="toFAQSO()" style="background: #F4F4F4;">
-                <h1 class="body-text" style="position: relative; left: 40%; font-family: Inter;">
-                    <b>FAQ</b>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toFAQSO()">
+                <img src="Assets\faqvector.svg" alt="FAQ Vector" class="vector">
+                <h1 class="side-button-text">
+                    FAQ
                 </h1>
             </button>
-            <img src="Assets\faqvector.svg" style="position: relative; left: 8%; bottom: 75%; width: 12%;">
         </div>
 
-    </div>
+        <div id="top-container">
+            <h1 class="title-header" id="title" style="font-family: Inter;">
+                Welcome to SacCares!
+            </h1>
 
-    <!--Start of Top Panel including About Us and Sign In.-->
-    <div style="position: absolute; top: 0px; left: 20%; right: 0%; background-color: #ffffff; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.23); border-bottom: 2px black solid;">
-        <h1 class="blue-header" style="position: relative; left: 2%; text-align: left; font-family: Inter;">
-            Welcome to SacCares!
-        </h1>
-        <div style="position: absolute; bottom: 30%; left: 80%; height: 40%; width: 8%; background-color: #ffffff; border-radius: 10px; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.23);">
-            <button class="button" type="submit" onclick="toAboutUsSO()" style="background: #F4F4F4;">
-                <h1 class="blue-body-text" style="position: relative; bottom: 15%; font-family: Inter;">
+            <button class="top-button" id="about-button" type="submit" onclick="toAboutUsSO()">
+                <h1 class="top-button-text" style="font-family: Inter; font-size: 1.5rem;">
                     About Us
                 </h1>
             </button>
-        </div>
-        <div style="position: absolute; bottom: 30%; left: 89%; height: 40%; width: 8%; background-color: #ffffff; border-radius: 10px; box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.23);">
-            <button class="button" type="submit" onclick="toSignIn()" style="background: #F4F4F4;">
-                <h1 class="blue-body-text" style="position: relative; bottom: 15%; font-family: Inter;">
+
+            <button class="top-button" id="sign-in-button" type="submit" onclick="toSignIn()">
+                <h1 class="top-button-text" style="font-family: Inter; font-size: 1.5rem;">
                     Sign In
                 </h1>
             </button>
-        </div>
-    </div>
 
-    <!--Start of Middle Section including tower bridge pic and message.-->
-    <!--Include picture of Tower Bridge-->
-    <img src="Assets\towerbridge.jpg" style="position: absolute; left: 21.3%; top: 16%; width: 77.6%; max-height: 80%; border-radius: 10px;">
-    <!--Message Section-->
-    <div style="position: absolute; top: 29%; left: 71%; height: 40%; width: 20%; background: rgba(254.99, 254.99, 254.99, 0.20); backdrop-filter: blur(5.90px);">
-    </div>
-    <div style="position: absolute; top: 30%; left: 70%; height: 40%; width: 20%; background: rgba(254.99, 254.99, 254.99, 0.35); backdrop-filter: blur(5.90px);">
-        <h1 class="green-header" style="position: relative; top: 8%; left: 8%; font-family: Lato;">
-            We’re Here To Help
-        </h1>
-        <p class="body-text" style="position: relative; top: 8%; left: 8%; font-size: 1.3rem; max-width: 90%;">
-            SacCares is a website dedicated to helping those in the Sacramento area who are experiencing homelessness find the
-            resources they need to thrive. We can help you find shelters, healthcare, and other vital resources that you and your
-            family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.
-        </p>
-    </div>
+            <img src="Assets\towerbridge.jpg" alt="Tower Bridge" id="tower-bridge">
+
+            <div class="transparent-box">
+                <div class="transparent-box" style="position: relative; top: -2vh; left: 1vw; background-color: rgba(254.99, 254.99, 254.99, 0.30);"></div>
+
+                <h1 id="green-header" style="font-family: Lato; position: relative; top: -37vh; left: -2vw;">
+                    We're Here to Help!
+                </h1>
+
+                <p id="welcome-message">
+                    SacCares is a website dedicated to helping those in the Sacramento area who are experiencing homelessness find the
+                    resources they need to thrive. We can help you find shelters, healthcare, and other vital resources that you and your
+                    family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.
+                </p>
+            </div>
+        </div>
+
+    </body>
 
 </html>

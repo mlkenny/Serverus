@@ -30,13 +30,19 @@ function toAboutUs() {
 // Functions below are for links to pages where the user is NOT signed in.
 // This means the sign in and about us buttons exist.
 function toSearchSO() {
-    window.location.href = 'searchSO.html'
+    window.location.href = 'housingSO.html'
 }
 function toEmploymentSO() {
     window.location.href = 'employmentSO.html'
 }
 function toResourcesSO() {
     window.location.href = 'resourcesSO.html'
+}
+function toHealthCareSO() {
+    window.location.href = 'healthSO.html'
+}
+function toFoodBankSO() {
+    window.location.href = 'foodSO.html'
 }
 function toFAQSO() {
     window.location.href = 'faqSO.html'
