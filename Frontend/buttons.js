@@ -6,12 +6,6 @@ function toIndex() {
 function toHome() {
     window.location.href = 'home.html'
 }
-function toSignIn() {
-    window.location.href = 'signin.html'
-}
-function toSignUp() {
-    window.location.href = 'signup.html'
-}
 function toSearch() {
     window.location.href = 'search.html'
 }
@@ -52,4 +46,14 @@ function toFAQSO() {
 }
 function toAboutUsSO() {
     window.location.href = 'aboutusSO.html'
+}
+// Functions below are for the sign in and sign up pages.
+function toSignIn() {
+    window.location.href = 'signin.html'
+}
+function toSignUp() {
+    window.location.href = 'signup.html'
+}
+function onSignOut() {
+    toIndex();
 }

@@ -139,7 +139,8 @@ body {
     display: block;
     text-align: center;
     padding: 0px;
-    font-size: 1.5em;
+    font-size: 1.5rem;
+    font-family: Inter;
     color: #20B7F7;
 }
 .side-button-text {
@@ -153,9 +154,10 @@ body {
 }
 .standard-text {
     position: relative;
-    display: inline;
-    top: 0.8vh;
-    left: 2vw;
+    top: 0.6vh;
+    left: 3vw;
+    margin-top: 0.3vh;
+    margin-bottom: 0px;
     font-size: 1.3rem;
 }
 
@@ -183,28 +185,42 @@ body {
     border-radius: 7px;
 }
 .shelter-vector {
-    position: relative;
+    position: absolute;
     width: 1vw;
     top: 1vh;
     left: 1vw;
 }
 .address-vector {
-    position: relative;
+    position: absolute;
     width: 1vw;
     top: 4vh;
-    left: -8.55vw;
+    left: 1vw;
 }
 .link-vector {
-    position: relative;
+    position: absolute;
     width: 1vw;
     top: 7vh;
-    left: -14.5vw;
+    left: 1vw;
 }
 .star {
-    position: relative;
+    position: absolute;
     width: 1vw;
     left: 18.6vw;
-    top: 4.8vh;
+    top: 7vh;
+}
+#keyword-vector {
+    position: absolute;
+    width: 1.5vw;
+    top: 2.8vh;
+    left: 7.4vw;
+    filter: invert(60%) sepia(0%) saturate(7500%) hue-rotate(216deg) brightness(105%) contrast(106%);
+}
+#zipcode-vector {
+    position: absolute;
+    width: 1.5vw;
+    top: 2.8vh;
+    left: 30.8vw;
+    filter: invert(60%) sepia(0%) saturate(7500%) hue-rotate(216deg) brightness(105%) contrast(106%);
 }
 
 
@@ -229,24 +245,8 @@ body {
     border-radius: 7px;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
-#keyword-vector {
-    position: absolute;
-    width: 1.5vw;
-    top: 2.8vh;
-    left: 7.4vw;
-    filter: invert(60%) sepia(0%) saturate(7500%) hue-rotate(216deg) brightness(105%) contrast(106%);
-}
-#zipcode-vector {
-    position: absolute;
-    width: 1.5vw;
-    top: 5.3vh;
-    left: 30.8vw;
-    filter: invert(60%) sepia(0%) saturate(7500%) hue-rotate(216deg) brightness(105%) contrast(106%);
-}
 #active-tab {
     position: relative;
-    top: 3vh;
-    left: 6vw;
     font-weight: bolder;
     background-color: #20B7F7;
     color: white;
@@ -254,10 +254,10 @@ body {
 .tab-button {
     position: relative;
     display: block;
-    top: -1.9vh;
-    left: 10.5vw;
     width: 5vw;
     height: 4vh;
+    left: 6vw;
+    top: 3vh;
     border-radius: 7px;
     background-color: #F4F4F4;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
@@ -268,7 +268,6 @@ body {
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.50);
 }
 .tab-text {
-    padding-top: 1vh;
     font-family: Inter;
     font-size: 0.8rem;
     text-align: center;
