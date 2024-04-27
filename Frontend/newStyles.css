@@ -14,13 +14,13 @@ body {
 /* Containers */
 #side-container {
     position: static;
-    min-width: 30vw;
+    min-width: 23vw;
     min-height: 100vh;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
 }
 #top-container {
     position: relative;
-    min-width: 70vw;
+    min-width: 77vw;
     max-height: 10vh;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 1);
 }
@@ -164,7 +164,7 @@ body {
 #sac-logo {
     position: relative;
     max-width: 18vw;
-    left: 6vw;
+    left: 2.5vw;
 }
 .vector {
     display: block;
@@ -238,7 +238,7 @@ body {
     position: relative;
     top: -75vh;
     left: 30vw;
-    width: 35vw;
+    width: 40vw;
     height: 4vh;
     border-color: white;
     border-radius: 7px;
