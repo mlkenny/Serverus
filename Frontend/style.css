@@ -66,14 +66,14 @@ body {
 }
 .set-listing-items ul li a:hover svg path {
 	transform: .3s;
-	fill: var(--color-white); !important;
+	fill: var(--color-white) !important;
 }
 .active-item {
 	background-color: var(--color-sky) !important;
 	color: var(--color-white) !important;
 }
 .active-item svg path {
-	fill: var(--color-white); !important;
+	fill: var(--color-white) !important;
 }
 
 .set-navbar .active-item {
