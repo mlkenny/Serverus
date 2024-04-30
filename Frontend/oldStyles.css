@@ -51,8 +51,8 @@ html {
 
 .g-signin2 {
     position: relative;
-    top: 520px;
-    left: 42.5%;
+    top: 65vh;
+    left: 16vw;
 }
 .button {
     display: inline-block;
