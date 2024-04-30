@@ -77,20 +77,23 @@ async function createMarker(places) {
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
 const apiKey = 'AIzaSyDPwlEdi4wkJa1ezTXBMyhM391JZzNdxDg'; // Input your API key here.
 
-document.getElementById('location-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    var location = document.getElementById('location').value;
-    // Regular expression patterns for city, state, and zip code validation
-    var cityStatePattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
-    var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
-    var locationError = document.getElementById('locationCheck');
-    var hasError = false; // Boolean variable to track the error status
+document.getElementById('location').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission on Enter press
+        var location = this.value.trim(); // Get the value of the input field and trim any leading/trailing whitespace
 
-    // Error checking
-    if (!cityStatePattern.test(location) && !zipCodePattern.test(location)) { 
-        hasError = true;
-        locationError.style.visibility = 'visible';
-        return;
+        // Regular expression patterns for city, state, and zip code validation
+        var cityStatePattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+        var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+        var locationError = document.getElementById('locationCheck');
+        var hasError = false; // Boolean variable to track the error status
+
+        // Error checking
+        if (!cityStatePattern.test(location) && !zipCodePattern.test(location)) { 
+            hasError = true;
+            locationError.style.visibility = 'visible';
+            return;
+        }
     }
 
     locationError.style.visibility = 'hidden';
