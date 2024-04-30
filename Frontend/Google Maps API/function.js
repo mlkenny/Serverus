@@ -75,27 +75,25 @@ async function createMarker(places) {
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'AIzaSyDrjiteTAbow8AASp_6lBuGuTzse982CBY'; // Input your API key here.
+const apiKey = 'INPUT API HERE'; // Input your API key here.
 
-function handleSearch(location) {
-        // Regular expression patterns for city, state, and zip code validation
-        var cityStatePattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
-        var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
-        var locationInput = document.getElementById('location');
-        var location = locationInput.value.trim();
-        var hasError = false; // Boolean variable to track the error status
+document.getElementById('location-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    var location = document.getElementById('location').value;
+    // Regular expression patterns for city, state, and zip code validation
+    var cityStatePattern = /^[a-zA-Z]+(?:[\s-][a-zA-Z]+)*$/;
+    var zipCodePattern = /^\d{5}$|^\d{5}-\d{4}$/;
+    var locationError = document.getElementById('locationCheck');
+    var hasError = false; // Boolean variable to track the error status
 
-        // Error checking
-        if (!cityStatePattern.test(location) && !zipCodePattern.test(location)) { 
-            hasError = true;
-            // Display an error message or perform an action (e.g., show a pop-up)
-            alert('Invalid location. Please enter a valid city, state, or zip code.');
-            // Clear the input field
-            locationInput.value = '';
-            // Focus on the input field
-            locationInput.focus();
-            return;
-        }
+    // Error checking
+    if (!cityStatePattern.test(location) && !zipCodePattern.test(location)) { 
+        hasError = true;
+        locationError.style.visibility = 'visible';
+        return;
+    }
+
+    locationError.style.visibility = 'hidden';
 
     // Get the current page URL or any other identifier
     var currentPage = window.location.href;
@@ -148,22 +146,6 @@ function handleSearch(location) {
     .catch(error => {
         console.error('Error:', error);
     });
-};
-
-// Event listener for form submission
-document.getElementById('location-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-    var location = document.getElementById('location').value; // Get the entered location
-    handleSearch(location); // Call the function to handle the search
-});
-
-// Event listener for Enter key press in the input field
-document.getElementById('location').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission on Enter press
-        var location = document.getElementById('location').value; // Get the entered location
-        handleSearch(location); // Call the function to handle the search
-    }
 });
 
   
@@ -171,11 +153,6 @@ function displayPlaces(places, listElementId, noResultsMessage) {
     // Get the list element from the HTML
     var list = document.getElementById(listElementId);
         
-    // Check if the list element exists before proceeding
-    if (!list) {
-        console.error('List element not found:', listElementId);
-        return;
-    }
     // Clear any previous results
     list.innerHTML = '';
     

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<!-- Page Head !-->
+  <head>
+    <title>Sign In</title>
+    <meta name="description" content="sign in page">
+    <meta name="keywords" content="Sacramento, Homeless, Shelter, Sign In">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="oldStyles.css">
+    <script src="google_script.js"></script>
+    <script src="buttons.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="104764457753-urb7g80r6oq3j72stn66q0ooks96h7l6.apps.googleusercontent.com">
+    <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    <style type="text/css">
+      html, body {
+          height: 100%;
+          margin: 0;
+          background: rgba(240, 240, 240);
+      }
+
+      #wrapper {
+          min-height: 100%; 
+      }
+    </style>
+  </head>
+
+  <html>
+   
+      <div style="width: 40%; height: 700px; top: 10%; bottom: 100px; position: relative; border-radius: 15px; margin: auto; background: rgba(255, 255, 255)">
+        <div style="margin: auto; top: 15%; position: relative; text-align: center; color: black; font-size: 40px; font-family: Inter; font-weight: 600; height: 40px;">Sign In 
+          <form style="height: 125px">
+            <label for="fname" style="left: 15%; top: 70px; position: absolute; text-align: left; color: #6D6D6D; font-size: 20px; font-family: Inter; font-weight: 600; word-wrap: break-word">E-mail:</label>
+            <input type="text" id="email" name="email" style="font-size: 16px; padding-left: 10px; width: 70%; height: 70px; margin: auto; top: 50px; position: relative; background: white; border-radius: 8px; border: 1px #878787 solid" placeholder="Enter E-mail...">
+          </form>
+          <form style="height: 125px">
+            <label for="fname" style="left: 15%; top: 195px; position: absolute; text-align: left; color: #6D6D6D; font-size: 20px; font-family: Inter; font-weight: 600; word-wrap: break-word">Password:</label>
+            <input type="text" id="email" name="email" style="font-size: 16px; padding-left: 10px; width: 70%; height: 70px; margin: auto; top: 50px; position: relative; background: white; border-radius: 8px; border: 1px #878787 solid" placeholder="Enter password...">
+          </form>
+        </div>
+        <p class="passForgot" style="font-family: Inter; top: 360px; right: 15%; position: relative;">Forgot your password?</p>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        <button class="button" onclick="toHome()" style="position: relative; height: 80px; width: 20%; padding: 3%; text-align: center; top: 320px; left: 40%; font-size: 1.3rem; color: white; font-family: Inter; font-weight: bolder; background: #20B7F7; border-radius: 10px">Sign In</button>
+        <!--<div style="position: relative; width: 20%; padding: 3%; text-align: center; top: 50%; left: 38%; font-size: 24px; color: white; font-family: Inter; font-weight: bolder; background: #20B7F7; border-radius: 10px">Sign In</div>-->
+        <button class="button" onclick="toSignUp()" style="position: relative; top: 390px; left: 17%; width: 25%; height: 45px; font-size: 1em;"><u>Sign Up</u></button>
+      </div>
+  </html>

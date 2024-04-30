@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+    <html>
+    <!--HEAD OF PAGE-->
+
+    <head>
+        <title>SacCares - Healthcare</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <link rel="stylesheet" href="newStyles.css">
+        <script src="buttons.js"></script>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    </head>
+
+    <body>
+        <div id="side-container">
+            <h1 class="title-header">
+                SacCares
+            </h1>
+            <img src="Assets\sacstatelogo.jpg" alt="Sac State Logo" id="sac-logo">
+
+            <button class="side-button" id="button" type="submit" onclick="toHomeSO()" style="position:relative; top: 8vh; margin-bottom: 1vh;">
+                <img src="Assets\homevector.svg" alt="Home Vector" class="vector">
+                <h1 class="side-button-text">
+                    Home
+                </h1>
+            </button>
+
+            <button class="side-button" id="active-button" type="submit" onclick="toSearchSO()">
+                <img src="Assets\searchvector.svg" alt="Search Vector" class="vector" id="active-vector">
+                <h1 class="side-button-text">
+                    Search
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toEmploymentSO()">
+                <img src="Assets\employmentvector.svg" alt="Employment Vector" class="vector">
+                <h1 class="side-button-text">
+                    Employment
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toResourcesSO()">
+                <img src="Assets\resourcesvector.svg" alt="Resource Vector" class="vector">
+                <h1 class="side-button-text">
+                    Resources
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toFAQSO()">
+                <img src="Assets\faqvector.svg" alt="FAQ Vector" class="vector">
+                <h1 class="side-button-text">
+                    FAQ
+                </h1>
+            </button>
+        </div>
+
+        <div id="top-container">
+            <h1 class="title-header" id="title" style="font-family: Inter; margin-left: 2vw;">
+                SacCares Multi-Search!
+            </h1>
+
+            <button class="top-button" id="about-button" type="submit" onclick="toAboutUsSO()">
+                <h1 class="top-button-text"">
+                    About Us
+                </h1>
+            </button>
+
+            <button class="top-button" id="sign-in-button" type="submit" onclick="toSignIn()">
+                <h1 class="top-button-text">
+                    Sign In
+                </h1>
+            </button>
+
+            <div id="middle-container">
+                <input type="text" id="keywords-input" placeholder="Enter Keywords Search">
+                <img src="Assets\searchvector.svg" alt="Search Vector" class="vector" id="keyword-vector">
+
+                <button class="tab-button" type="submit" onclick="toSearchSO()">
+                    <h1 class="tab-text">
+                        Housing
+                    </h1>
+                </button>
+                <button class="tab-button" id="active-tab" style="top: -1vh; left: 10.6vw;" type="submit" onclick="toHealthCareSO()">
+                    <h1 class="tab-text">
+                        Health-Care
+                    </h1>
+                </button>
+                <button class="tab-button" style="top: -5vh; left: 15.3vw;" type="submit" onclick="toFoodBankSO()">
+                    <h1 class="tab-text">
+                        Food
+                    </h1>
+                </button>
+
+                <div class="resource-container">
+                    <img src="Assets\sheltervector.svg" alt="Shelter Vector" class="shelter-vector">
+                    <h1 class="standard-text">
+                        Healthcare Name...
+                    </h1>
+                    <img src="Assets\addressvector.svg" alt="Address Vector" class="address-vector">
+                    <h1 class="standard-text">
+                        Address
+                    </h1>
+                    <img src="Assets\linkvector.svg" alt="Link Vector" class="link-vector">
+                    <h1 class="standard-text">
+                        Link
+                    </h1>
+                    <img src="Assets\blankstarvector.svg" alt="Blank Star" class="star">
+                </div>
+
+                <div class="resource-container">
+                    <img src="Assets\sheltervector.svg" alt="Shelter Vector" class="shelter-vector">
+                    <h1 class="standard-text">
+                        Healthcare Name...
+                    </h1>
+                    <img src="Assets\addressvector.svg" alt="Address Vector" class="address-vector">
+                    <h1 class="standard-text">
+                        Address
+                    </h1>
+                    <img src="Assets\linkvector.svg" alt="Link Vector" class="link-vector">
+                    <h1 class="standard-text">
+                        Link
+                    </h1>
+                    <img src="Assets\blankstarvector.svg" alt="Blank Star" class="star">
+                </div>
+
+                <div class="resource-container">
+                    <img src="Assets\sheltervector.svg" alt="Shelter Vector" class="shelter-vector">
+                    <h1 class="standard-text">
+                        Healthcare Name...
+                    </h1>
+                    <img src="Assets\addressvector.svg" alt="Address Vector" class="address-vector">
+                    <h1 class="standard-text">
+                        Address
+                    </h1>
+                    <img src="Assets\linkvector.svg" alt="Link Vector" class="link-vector">
+                    <h1 class="standard-text">
+                        Link
+                    </h1>
+                    <img src="Assets\blankstarvector.svg" alt="Blank Star" class="star">
+                </div>
+
+                <div class="resource-container">
+                    <img src="Assets\sheltervector.svg" alt="Shelter Vector" class="shelter-vector">
+                    <h1 class="standard-text">
+                        Healthcare Name...
+                    </h1>
+                    <img src="Assets\addressvector.svg" alt="Address Vector" class="address-vector">
+                    <h1 class="standard-text">
+                        Address
+                    </h1>
+                    <img src="Assets\linkvector.svg" alt="Link Vector" class="link-vector">
+                    <h1 class="standard-text">
+                        Link
+                    </h1>
+                    <img src="Assets\blankstarvector.svg" alt="Blank Star" class="star">
+                </div>
+
+                <div class="resource-container">
+                    <img src="Assets\sheltervector.svg" alt="Shelter Vector" class="shelter-vector">
+                    <h1 class="standard-text">
+                        Healthcare Name...
+                    </h1>
+                    <img src="Assets\addressvector.svg" alt="Address Vector" class="address-vector">
+                    <h1 class="standard-text">
+                        Address
+                    </h1>
+                    <img src="Assets\linkvector.svg" alt="Link Vector" class="link-vector">
+                    <h1 class="standard-text">
+                        Link
+                    </h1>
+                    <img src="Assets\blankstarvector.svg" alt="Blank Star" class="star">
+                </div>
+
+                <input type="text" id="zipcode-input" placeholder="Enter City, State, or Zipcode...">
+                <img src="Assets\searchvector.svg" alt="Search Vector" class="vector" id="zipcode-vector">
+            </div>
+        </div>
+
+    </body>
+
+</html>

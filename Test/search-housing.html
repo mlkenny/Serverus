@@ -6,10 +6,9 @@
     <title>Housing</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- STYLE SHEET -->
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- FONT AWESOME CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="./GoogleMapsAPI/style.css" />
   </head>
   <body>
     <!-- Modal Sign In -->
@@ -72,7 +71,7 @@
         <div class="set-logo-area text-center">
           <a href="index.html">
             <h4>SacCares</h4>
-            <img src="Assets/sacstate-logo.png" class="img-fluid">
+            <img src="assets/images/sacstate-logo.png" class="img-fluid">
           </a>
         </div>
         <!-- LISTING ITEMS -->
@@ -85,7 +84,7 @@
               </svg>Home</a>
             </li>
             <li>
-              <a href="search-housing.html" class="active-item">
+              <a href="search-food.html" class="active-item">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.89678 2.00628e-08C7.4781 0.000120879 6.08001 0.339494 4.81917 0.989804C3.55833 1.64011 2.47129 2.5825 1.64875 3.73835C0.826205 4.8942 0.29201 6.22998 0.0907317 7.63426C-0.110547 9.03854 0.026927 10.4706 0.491684 11.8109C0.956442 13.1513 1.73501 14.361 2.76242 15.3393C3.78983 16.3176 5.0363 17.036 6.39784 17.4346C7.75937 17.8331 9.19649 17.9004 10.5893 17.6306C11.9821 17.3609 13.2902 16.7619 14.4044 15.8839L18.2269 19.7062C18.4243 19.8968 18.6887 20.0023 18.9631 20C19.2376 19.9976 19.5001 19.8875 19.6942 19.6934C19.8882 19.4994 19.9983 19.2369 20.0007 18.9625C20.0031 18.688 19.8976 18.4236 19.7069 18.2262L15.8844 14.4039C16.9185 13.0921 17.5624 11.5156 17.7424 9.8549C17.9224 8.19422 17.6311 6.51642 16.902 5.01352C16.1729 3.51061 15.0355 2.24333 13.6197 1.35669C12.204 0.470054 10.5672 -0.000112141 8.89678 2.00628e-08ZM2.09334 8.89647C2.09334 7.09215 2.81013 5.36173 4.08602 4.08589C5.36191 2.81005 7.09239 2.09329 8.89678 2.09329C10.7012 2.09329 12.4316 2.81005 13.7075 4.08589C14.9834 5.36173 15.7002 7.09215 15.7002 8.89647C15.7002 10.7008 14.9834 12.4312 13.7075 13.707C12.4316 14.9829 10.7012 15.6996 8.89678 15.6996C7.09239 15.6996 5.36191 14.9829 4.08602 13.707C2.81013 12.4312 2.09334 10.7008 2.09334 8.89647Z" fill="black"/>
               </svg>Search</a></li>
@@ -302,35 +301,39 @@
             <!-- RIGHT MAP AREA -->
             <div class="main-map-area">
               <div class="adjust-api-map">
-                <form id="location-form" method="POST">
+                <form action="">
                   <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                      <input type="text" class="form-control" id="location" placeholder="Enter City, State, or Zipcode">
-                      <button type="submit" class="btn btn-primary" id="search-btn"><i class="fa fa-search"></i> Search</button>
+                    <input type="text" class="form-control" placeholder="Enter City, State, or Zipcode">
                   </div>
-                </form>         
-                <!--INSERT MAPS API HERE-->
-                <div class="map-container">
-                  <div id="map">
-                    <gmp-map center="38.5816, 121.4944" zoom="4" map-id="8a056949708ce337"></gmp-map>
-                  </div>
-                </div>
+                </form>
+                <img src="assets/images/map.png" class="img-fluid">
               </div>
             </div>
           </div>
+          <a href="#" class="btn-back">
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g filter="url(#filter0_d_48_34)">
+            <path d="M4.06394 6.68567H11.2973C11.3932 6.68567 11.4852 6.72882 11.553 6.80562C11.6208 6.88242 11.6589 6.98658 11.6589 7.09519C11.6589 7.2038 11.6208 7.30797 11.553 7.38477C11.4852 7.46157 11.3932 7.50471 11.2973 7.50471H4.06394C3.96802 7.50471 3.87603 7.46157 3.8082 7.38477C3.74037 7.30797 3.70227 7.2038 3.70227 7.09519C3.70227 6.98658 3.74037 6.88242 3.8082 6.80562C3.87603 6.72882 3.96802 6.68567 4.06394 6.68567Z" fill="#20B7F7"/>
+            <path d="M4.05388 7.09574L7.05354 10.4915C7.12145 10.5684 7.15961 10.6727 7.15961 10.7814C7.15961 10.8902 7.12145 10.9945 7.05354 11.0714C6.98563 11.1483 6.89352 11.1915 6.79748 11.1915C6.70144 11.1915 6.60933 11.1483 6.54142 11.0714L3.28643 7.38569C3.25275 7.34765 3.22603 7.30245 3.20779 7.2527C3.18956 7.20295 3.18018 7.14961 3.18018 7.09574C3.18018 7.04188 3.18956 6.98854 3.20779 6.93879C3.22603 6.88904 3.25275 6.84384 3.28643 6.8058L6.54142 3.1201C6.60933 3.0432 6.70144 3 6.79748 3C6.89352 3 6.98563 3.0432 7.05354 3.1201C7.12145 3.197 7.15961 3.30129 7.15961 3.41004C7.15961 3.51879 7.12145 3.62308 7.05354 3.69998L4.05388 7.09574Z" fill="#20B7F7"/>
+            </g>
+            <defs>
+            <filter id="filter0_d_48_34" x="0.180176" y="0" width="16.4788" height="16.1915" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="1" dy="1"/>
+            <feGaussianBlur stdDeviation="2"/>
+            <feComposite in2="hardAlpha" operator="out"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_48_34"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_48_34" result="shape"/>
+            </filter>
+            </defs>
+            </svg>
+             Back</a>
         </div> 
       </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script>
-      (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
-        key: "INPUTAPIKEY", // Input your API key here.
-        v: "weekly",
-        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
-        // Add other bootstrap parameters as needed, using camel case.
-      });
-    </script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script type="module" src=".\GoogleMapsAPI\function.js"></script>
   </body>
 </html>
