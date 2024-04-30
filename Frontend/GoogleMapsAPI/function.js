@@ -75,7 +75,7 @@ async function createMarker(places) {
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'AIzaSyDPwlEdi4wkJa1ezTXBMyhM391JZzNdxDg'; // Input your API key here.
+const apiKey = 'INPUTAPIKEY'; // Input your API key here.
 
 document.getElementById('location').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
