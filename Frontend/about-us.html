@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home</title>
+    <title>About Us</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -71,14 +71,14 @@
         <div class="set-logo-area text-center">
           <a href="index.html">
             <h4>SacCares</h4>
-            <img src="assets/sacstate-logo.png" class="img-fluid">
+            <img src="Assets/sacstate-logo.png" class="img-fluid">
           </a>
         </div>
         <!-- LISTING ITEMS -->
         <div class="set-listing-items">
           <ul>
             <li>
-                <a href="index.html" class="active-item"> 
+                <a href="index.html"> 
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M0.999787 11.0604H1.99979V18.074C1.99979 19.1791 2.89679 20.0779 3.99979 20.0779H15.9998C17.1028 20.0779 17.9998 19.1791 17.9998 18.074V11.0604H18.9998C19.1975 11.0603 19.3908 11.0016 19.5552 10.8915C19.7197 10.7814 19.8478 10.6249 19.9235 10.4418C19.9991 10.2588 20.0189 10.0574 19.9804 9.86303C19.9418 9.6687 19.8466 9.49019 19.7068 9.35007L10.7068 0.332589C10.614 0.239463 10.5038 0.165582 10.3825 0.115173C10.2612 0.0647647 10.1311 0.0388184 9.99979 0.0388184C9.86845 0.0388184 9.73841 0.0647647 9.61709 0.115173C9.49578 0.165582 9.38558 0.239463 9.29279 0.332589L0.292787 9.35007C0.152977 9.49019 0.057771 9.6687 0.0192035 9.86303C-0.0193641 10.0574 0.000438951 10.2588 0.076109 10.4418C0.151779 10.6249 0.279918 10.7814 0.444328 10.8915C0.608738 11.0016 0.802037 11.0603 0.999787 11.0604ZM7.99979 18.074V13.0643H11.9998V18.074H7.99979ZM9.99979 2.45771L15.9998 8.46936V13.0643L16.0008 18.074H13.9998V13.0643C13.9998 11.9591 13.1028 11.0604 11.9998 11.0604H7.99979C6.89679 11.0604 5.99979 11.9591 5.99979 13.0643V18.074H3.99979V8.46936L9.99979 2.45771Z" fill="black"/>
               </svg>Home</a>
@@ -133,23 +133,85 @@
       <section class="right-main-sec">
         <!-- *******HEADER******* -->
         <header class="set-navbar d-flex justify-content-between" data-bs-theme="dark">
-          <a href="index.html" class="main-home-item">Home</a>
+          <a href="about-us.html" class="main-home-item">About Us</a>
           <ul class="nav-listing-items">
-            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="about-us.html" class="active-item">About Us</a></li>
             <li><a data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In</a></li>
           </ul>
         </header>
         <!-- *******CONTENT AREA******* -->
         <div class="center-content-area pe-22 my-4">
-          <img src="Assets\towerbridge.jpg" alt="Tower Bridge" style="position: absolute; max-height: 85vh; width: 78vw; border-radius: 10px;">
-          <div class="inner-content-home">
-            <div id="adjust-text-block-behind"></div>
-            <div class="adjust-text-block">
-              <h4>We’re Here To Help</h4>
-              <p>SacCares is a website dedicated to helping those in the Sacramento area who are experiencing homelessness find the
-                resources they need to thrive. We can help you find shelters, healthcare, and other vital resources that you and
-                your family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix
-                that.</p>
+          <div class="row">
+            <!-- ABOUT CARDS -->
+            <div class="col-lg-12">
+              <div class="set-box-shadow set-border-blue p-3">
+                <div class="row pb-5">
+                  <div class="col-lg-6">
+                    <div class="main-about-card mt-5">
+                      <div class="inner-about-topper d-flex align-items-center gap-3 px-3">
+                        <div>
+                          <img src="Assets/user.png" class="img-fluid">
+                        </div>
+                        <div>
+                          <h3>Team Member</h3>
+                          <p>UI/UX Designer</p>
+                        </div>
+                      </div>
+                      <div class="inner-about-lower">
+                        <p class="mb-0">You find shelters, healthcare, and other vital resources that you and your family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="main-about-card mt-5">
+                      <div class="inner-about-topper d-flex align-items-center gap-3 px-3">
+                        <div>
+                          <img src="Assets/user.png" class="img-fluid">
+                        </div>
+                        <div>
+                          <h3>Team Member</h3>
+                          <p>UI/UX Designer</p>
+                        </div>
+                      </div>
+                      <div class="inner-about-lower">
+                        <p class="mb-0">You find shelters, healthcare, and other vital resources that you and your family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="main-about-card mt-5">
+                      <div class="inner-about-topper d-flex align-items-center gap-3 px-3">
+                        <div>
+                          <img src="Assets/user.png" class="img-fluid">
+                        </div>
+                        <div>
+                          <h3>Team Member</h3>
+                          <p>UI/UX Designer</p>
+                        </div>
+                      </div>
+                      <div class="inner-about-lower">
+                        <p class="mb-0">You find shelters, healthcare, and other vital resources that you and your family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="main-about-card mt-5">
+                      <div class="inner-about-topper d-flex align-items-center gap-3 px-3">
+                        <div>
+                          <img src="Assets/user.png" class="img-fluid">
+                        </div>
+                        <div>
+                          <h3>Team Member</h3>
+                          <p>UI/UX Designer</p>
+                        </div>
+                      </div>
+                      <div class="inner-about-lower">
+                        <p class="mb-0">You find shelters, healthcare, and other vital resources that you and your family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to fix that.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div> 
