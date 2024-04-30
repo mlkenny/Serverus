@@ -253,7 +253,7 @@ body {
 .map-container {
     position: relative; /* Change to relative positioning */
     width: 100%; /* Ensure the container spans the entire width */
-    height: 600px; /* Set an appropriate height for the map container */
+    height: 84vh; /* Set an appropriate height for the map container */
 }
 
 #map {
@@ -271,6 +271,11 @@ body {
 	margin-top: 22px;
 	margin-bottom: 12px;
 	text-decoration: none;
+}
+#searchbar {
+	width: 45vw;
+	margin-left: 3vw;
+	margin-top: -1.5vh;
 }
 
 
