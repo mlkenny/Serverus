@@ -75,7 +75,7 @@ async function createMarker(places) {
 
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'AIzaSyDrjiteTAbow8AASp_6lBuGuTzse982CBY'; // Input your API key here.
+const apiKey = 'INPUTAPIKEY'; // Input your API key here.
 
 function handleSearch(location) {
         // Regular expression patterns for city, state, and zip code validation
