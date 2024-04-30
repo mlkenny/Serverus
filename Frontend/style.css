@@ -247,6 +247,19 @@ body {
 	width: 90%;
 	z-index: 99999;
 }
+
+/* Always set the map height explicitly to define the size of the div element
+   that contains the map. */
+.map-container {
+    position: relative; /* Change to relative positioning */
+    width: 100%; /* Ensure the container spans the entire width */
+    height: 600px; /* Set an appropriate height for the map container */
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+}
 .btn-back {
 	padding: 8px 22px;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
