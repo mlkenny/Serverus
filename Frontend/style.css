@@ -156,11 +156,13 @@ body {
 #adjust-text-block-behind {
 	background-color: rgba(254.99, 254.99, 254.99, 0.40);
 	position: absolute;
-	width: 27.1%;
-	height: 52%;
+	width: 393px;
+	height: 50vh;
 	padding: 72px 38px;
-	left: 49vw;
-	top: 19vh;
+	font-family: var(--font-lato);
+	right: 9%;
+	top: 48%;
+	transform: translateY(-50%);
 }
 .row {
 	display: block;
@@ -168,10 +170,10 @@ body {
 
 /*LEFT SEARCH LIST*/
 .search-list-left {
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	flex-shrink: 0;
-	width: 342px;
-	padding: 16px;
+	margin-right: 128px; /* Adjust this margin as needed */
+	height: 750px; /* Set a fixed height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+	overflow-x: hidden;
 }
 .search-list-items ul {
 	list-style-type: none;
@@ -194,6 +196,7 @@ body {
 	border-radius: 7px;
 	display: inline-block;
 }
+
 .active-search {
 	background-color: var(--color-sky) !important;
 	color: var(--color-white) !important;
@@ -206,6 +209,7 @@ body {
 	padding: 6px 15px;
 	position: relative;
 	margin-top: 10px;
+	width: 100%;
 }
 .search-card a {
 	color: inherit;
@@ -225,9 +229,16 @@ body {
 .search-card i.checked-star {
 	color: orange;
 }
+
+/* Style for the parent container */
+.left-content {
+	flex: 1; /* Let it grow to fill available space */
+	width: 500px;
+  }
+  
 /*RIGHT MAP AREA*/
 .main-map-area {
-	flex-grow: 1;
+	flex: 2.5;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .adjust-api-map .input-group-text {
@@ -318,6 +329,7 @@ body {
 	font-weight: bold;
 	font-size: 14px;
 	color: #A6A6A6;
+	pointer-events: none;
 }
 
 

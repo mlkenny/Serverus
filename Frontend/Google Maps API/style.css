@@ -1,0 +1,39 @@
+/* Always set the map height explicitly to define the size of the div element
+   that contains the map. */
+
+   .map-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%; /* Adjust the width as needed */
+    background-color: #f0f0f0;
+  }
+  
+  #map {
+    height: 100%;
+  }
+  
+  #locationCheck {
+    visibility: hidden;
+  }
+
+  /* Default button style */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Style when button is clicked */
+button:active {
+  background-color: #0056b3;
+}
+
+/* Additional style for clicked button */
+button.clicked {
+  background-color: #28a745;
+}

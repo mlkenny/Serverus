@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html>
+    <!--HEAD OF PAGE-->
+
+    <head>
+        <title>SacCares - Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+        <link rel="stylesheet" href="newStyles.css">
+        <script src="buttons.js"></script>
+        <script src="google_script.js"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <meta name="google-signin-client_id" content="104764457753-urb7g80r6oq3j72stn66q0ooks96h7l6.apps.googleusercontent.com">
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css2?family=Roboto+Serif' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
+    </head>
+
+    <body>
+        <div id="side-container">
+            <h1 class="title-header">
+                SacCares
+            </h1>
+            <img src="Assets\sacstatelogo.jpg" alt="Sac State Logo" id="sac-logo">
+
+            <button class="side-button" id="active-button" type="submit" onclick="toHome()">
+                <img src="Assets\homevector.svg" alt="Home Vector" class="vector" id="active-vector">
+                <h1 class="side-button-text">
+                    Home
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toSearch()">
+                <img src="Assets\searchvector.svg" alt="Search Vector" class="vector">
+                <h1 class="side-button-text">
+                    Search
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toEmployment()">
+                <img src="Assets\employmentvector.svg" alt="Employment Vector" class="vector">
+                <h1 class="side-button-text">
+                    Employment
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toResources()">
+                <img src="Assets\resourcesvector.svg" alt="Resource Vector" class="vector">
+                <h1 class="side-button-text">
+                    Resources
+                </h1>
+            </button>
+
+            <button class="side-button" id="side-button" type="submit" onclick="toFAQ()">
+                <img src="Assets\faqvector.svg" alt="FAQ Vector" class="vector">
+                <h1 class="side-button-text">
+                    FAQ
+                </h1>
+            </button>
+        </div>
+
+        <div id="top-container">
+            <h1 class="title-header" id="title" style="font-family: Inter;">
+                Welcome to SacCares!
+            </h1>
+
+            <button class="top-button" id="about-button" type="submit" onclick="toAboutUs()">
+                <h1 class="top-button-text">
+                    About Us
+                </h1>
+            </button>
+
+            <button class="top-button" id="sign-in-button" type="submit" onclick="signOut()">
+                <h1 class="top-button-text">
+                    Sign Out
+                </h1>
+            </button>
+
+            <img src="Assets\towerbridge.jpg" alt="Tower Bridge" id="tower-bridge">
+
+            <div class="transparent-box">
+                <div class="transparent-box"
+                    style="position: relative; top: -2vh; left: 1vw; background-color: rgba(254.99, 254.99, 254.99, 0.30);">
+                </div>
+
+                <h1 id="green-header" style="font-family: Lato;">
+                    We're Here to Help!
+                </h1>
+
+                <p id="welcome-message">
+                    SacCares is a website dedicated to helping those in the Sacramento area who are experiencing
+                    homelessness find the
+                    resources they need to thrive. We can help you find shelters, healthcare, and other vital resources that
+                    you and your
+                    family may need to find comfort and stability. Seeking help can be confusing and difficult - we want to
+                    fix that.
+                </p>
+            </div>
+        </div>
+
+    </body>
+
+</html>
