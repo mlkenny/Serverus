@@ -169,6 +169,8 @@ body {
 /*LEFT SEARCH LIST*/
 .search-list-left {
 	margin-right: 128px; /* Adjust this margin as needed */
+	height: 750px; /* Set a fixed height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 .search-list-items ul {
 	list-style-type: none;
