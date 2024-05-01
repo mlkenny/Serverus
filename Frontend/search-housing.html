@@ -140,30 +140,35 @@
             <li><a data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In</a></li>
           </ul>
         </header>
-        <!-- *******CONTENT AREA******* -->
+                <!-- *******CONTENT AREA******* -->
         <div class="center-content-area pe-22 my-4">
           <div class="inner-content-search d-flex">
-            <!-- LEFT SEARCH LIST -->
-            <div class="search-list-left">
-              <div class="search-list-items text-center mt-5">
-                <ul>
-                  <li><a href="search-housing.html" class="active-search">Housing</a></li>
-                  <li><a href="search-health-care.html" >Health-Care</a></li>
-                  <li><a href="search-food.html" >Food</a></li>
-                </ul>
+            <!-- LEFT SEARCH LIST AND SEARCH CARDS -->
+            <div class="left-content">
+              <div class="search-list-left">
+                <div class="search-list-items text-center mt-5">
+                  <ul>
+                    <li><a href="search-housing.html" class="active-search">Housing</a></li>
+                    <li><a href="search-health-care.html" >Health-Care</a></li>
+                    <li><a href="search-food.html" >Food</a></li>
+                  </ul>
+                </div>
+                <div class="search-list-search-content mt-3">
+                  <!-- SEARCH CARD -->
+                  <div id="shelter-list" class="search-card">
+                    <!-- Content for search cards -->
+                  </div>
+                </div>
               </div>
-              <div class="search-list-search-content mt-3">
-                <!-- SEARCH CARD -->
-                <div id="shelter-list" class="search-card">
-                </div> 
+            </div>
             <!-- RIGHT MAP AREA -->
             <div class="main-map-area">
               <div class="adjust-api-map">
                 <form id="location-form" method="POST">
                   <div class="input-group">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                      <input type="text" class="form-control" id="location" placeholder="Enter City, State, or Zipcode">
-                      <button type="submit" class="btn btn-primary" id="search-btn"><i class="fa fa-search"></i> Search</button>
+                    <input type="text" class="form-control" id="location" placeholder="Enter City, State, or Zipcode">
+                    <button type="submit" class="btn btn-primary" id="search-btn"><i class="fa fa-search"></i> Search</button>
                   </div>
                 </form>         
                 <!--INSERT MAPS API HERE-->
@@ -174,6 +179,9 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
           </div>
         </div> 
       </section>

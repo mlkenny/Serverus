@@ -168,10 +168,7 @@ body {
 
 /*LEFT SEARCH LIST*/
 .search-list-left {
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	flex-shrink: 0;
-	width: 342px;
-	padding: 16px;
+	margin-right: 128px; /* Adjust this margin as needed */
 }
 .search-list-items ul {
 	list-style-type: none;
@@ -194,6 +191,7 @@ body {
 	border-radius: 7px;
 	display: inline-block;
 }
+
 .active-search {
 	background-color: var(--color-sky) !important;
 	color: var(--color-white) !important;
@@ -206,6 +204,7 @@ body {
 	padding: 6px 15px;
 	position: relative;
 	margin-top: 10px;
+	width: 100%;
 }
 .search-card a {
 	color: inherit;
@@ -225,9 +224,16 @@ body {
 .search-card i.checked-star {
 	color: orange;
 }
+
+/* Style for the parent container */
+.left-content {
+	flex: 1; /* Let it grow to fill available space */
+	width: 470px;
+  }
+  
 /*RIGHT MAP AREA*/
 .main-map-area {
-	flex-grow: 1;
+	flex: 2.5;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .adjust-api-map .input-group-text {
