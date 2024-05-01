@@ -156,11 +156,13 @@ body {
 #adjust-text-block-behind {
 	background-color: rgba(254.99, 254.99, 254.99, 0.40);
 	position: absolute;
-	width: 27.1%;
-	height: 52%;
+	width: 393px;
+	height: 50vh;
 	padding: 72px 38px;
-	left: 49vw;
-	top: 19vh;
+	font-family: var(--font-lato);
+	right: 9%;
+	top: 48%;
+	transform: translateY(-50%);
 }
 .row {
 	display: block;
@@ -327,6 +329,7 @@ body {
 	font-weight: bold;
 	font-size: 14px;
 	color: #A6A6A6;
+	pointer-events: none;
 }
 
 
