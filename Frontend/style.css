@@ -21,8 +21,9 @@ body {
 	flex-shrink: 0;
 	padding: 20px;
 	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	/*height: 100vh;
-	overflow-y: scroll;*/
+	height: 100vh;
+	border-radius: 5px;
+	/*overflow-y: scroll;*/
 }
 .set-logo-area a {
 	color: inherit;
