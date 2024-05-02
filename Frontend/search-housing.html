@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Housing</title>
+    <title>Multi-Search</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <!-- STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -134,7 +134,7 @@
       <section class="right-main-sec">
         <!-- *******HEADER******* -->
         <header class="set-navbar d-flex justify-content-between" data-bs-theme="dark">
-          <a href="search-housing.html" class="main-home-item">Housing Resources</a>
+          <a href="search-housing.html" class="main-home-item">SacCares Multi-Search</a>
           <ul class="nav-listing-items">
             <li><a href="about-us.html">About Us</a></li>
             <li><a data-bs-toggle="modal" data-bs-target="#exampleModal">Sign In</a></li>
@@ -148,17 +148,25 @@
               <div class="search-list-left">
                 <div class="search-list-items text-center mt-5">
                   <ul>
-                    <li><a href="search-housing.html" class="active-search">Housing</a></li>
-                    <li><a href="search-health-care.html" >Health-Care</a></li>
-                    <li><a href="search-food.html" >Food</a></li>
+                    <button id="all-filter">All</button>
+                    <button id="food-filter">Food</button>
+                    <button id="housing-filter">Housing</button>
+                    <button id="health-filter">Health</button>
                   </ul>
                 </div>
                 <div class="search-list-search-content mt-3">
-                  <!-- SEARCH CARD -->
-                  <div id="shelter-list" class="search-card">
-                    <!-- Content for search cards -->
+                  <!-- Separate containers for each category -->
+                  <div id="food-list" class="search-card">
+                      <!-- Content for food search cards -->
                   </div>
-                </div>
+                  <div id="housing-list" class="search-card">
+                      <!-- Content for housing search cards -->
+                  </div>
+                  <div id="health-list" class="search-card">
+                      <!-- Content for health search cards -->
+                  </div>
+                  <!-- Add more containers as needed for other categories -->
+              </div>
               </div>
             </div>
             <!-- RIGHT MAP AREA -->

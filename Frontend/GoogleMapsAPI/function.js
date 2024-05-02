@@ -71,8 +71,21 @@ async function createMarker(places) {
     }
 }
 
+// Event listener for form submission
+document.getElementById('location-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+    var location = document.getElementById('location').value; // Get the entered location
+    handleSearch(location); // Call the function to handle the search
+});
 
-
+// Event listener for Enter key press in the input field
+document.getElementById('location').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission on Enter press
+        var location = document.getElementById('location').value; // Get the entered location
+        handleSearch(location); // Call the function to handle the search
+    }
+});
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
 const apiKey = 'INPUTAPI'; // Input your API key here.
@@ -96,27 +109,15 @@ function handleSearch(location) {
             locationInput.focus();
             return;
         }
+        searchHousing(location);
+        searchFood(location);
+        searchMedical(location);
+};
 
-    // Get the current page URL or any other identifier
-    var currentPage = window.location.href;
-
-    // Pages for search
-    var housing = 'housing';
-    var health = 'health';
-    var food = 'food';
-
+function searchHousing(location) {
     // Define the textQuerySearch based on the current page
     var textQuerySearch;
-    if (currentPage.includes(housing)) {
-        textQuerySearch = `homeless shelters in ${location}`;
-    } else if (currentPage.includes(food)) {
-        textQuerySearch = `food banks in ${location}`;
-    } else if (currentPage.includes(health)) {
-        textQuerySearch = `hospitals in ${location}`;
-    } else {
-        // Default to a generic search if the page doesn't match any specific criteria
-        textQuerySearch = `services in ${location}`;
-    }
+    textQuerySearch = `homeless shelters in ${location}`;
 
     // Fetch data based on the textQuerySearch
     fetch(apiUrl, {
@@ -133,46 +134,73 @@ function handleSearch(location) {
         return response.json();
     })
     .then(data => {
-        // Process the response data and update the UI accordingly based on the current page
-        if (currentPage.includes(housing)) {
-            displayShelters(data);
-        } else if (currentPage.includes(food)) {
-            displayFoodBanks(data);
-        } else if (currentPage.includes(health)) { 
-            displayHealthcare(data);
-        } else {
-            // Handle default response
-            console.log('Default response');
-        }
+        displayShelters(data);
     })
     .catch(error => {
         console.error('Error:', error);
     });
-};
+}
 
-// Event listener for form submission
-document.getElementById('location-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent form submission
-    var location = document.getElementById('location').value; // Get the entered location
-    handleSearch(location); // Call the function to handle the search
-});
+function searchFood(location) {
+    // Define the textQuerySearch based on the current page
+    var textQuerySearch;
+    textQuerySearch = `food banks in ${location}`;
 
-// Event listener for Enter key press in the input field
-document.getElementById('location').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent form submission on Enter press
-        var location = document.getElementById('location').value; // Get the entered location
-        handleSearch(location); // Call the function to handle the search
-    }
-});
+    // Fetch data based on the textQuerySearch
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': apiKey,
+            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
+        },
+        body: JSON.stringify({textQuery: textQuerySearch})
+    })
+    .then(response => {
+        console.log('Response status code:', response.status); // Log the status code
+        return response.json();
+    })
+    .then(data => {
+        displayFoodBanks(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
+function searchMedical(location) {
+    // Define the textQuerySearch based on the current page
+    var textQuerySearch;
+    textQuerySearch = `hospitals in ${location}`;
+
+    // Fetch data based on the textQuerySearch
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Goog-Api-Key': apiKey,
+            'X-Goog-FieldMask': 'places.displayName,places.formattedAddress,places.websiteUri,places.location,places.nationalPhoneNumber'
+        },
+        body: JSON.stringify({textQuery: textQuerySearch})
+    })
+    .then(response => {
+        console.log('Response status code:', response.status); // Log the status code
+        return response.json();
+    })
+    .then(data => {
+        displayHealthcare(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
   
-function displayPlaces(places, listElementId, noResultsMessage) {
+function displayPlaces(places, listElementId, noResultsMessage, searchType) {
     // Get the list element from the HTML
     var list = document.getElementById(listElementId);
         
     // Clear any previous results
-    list.innerHTML = '';
+    //list.innerHTML = '';
     
     // Check if places is an object
     if (typeof places !== 'object' || places === null) {
@@ -183,22 +211,62 @@ function displayPlaces(places, listElementId, noResultsMessage) {
     // Access the 'places' array within the object
     var placesArray = places.places;
 
+    if(searchType === 'housing'){
+        var housingArray = placesArray;
+        printAndCreateMarker(housingArray, searchType, list);
+    } else if(searchType === 'food') {
+        var foodArray = placesArray;
+        printAndCreateMarker(foodArray, searchType, list);
+    } else if(searchType === 'health') {
+        var healthArray = placesArray;
+        printAndCreateMarker(healthArray, searchType, list);
+    }
+
     // Check if there are any places returned
     if (placesArray.length === 0) {
         list.innerHTML = `<li>${noResultsMessage}</li>`;
         return;
     }
+}
 
+
+function displayShelters(shelters) {
+    displayPlaces(
+        shelters, // places data
+        'housing-list', // ID of the list element
+        'No shelters found nearby', // Message for no results
+        'housing'
+    );
+}
+
+function displayFoodBanks(food) {
+    displayPlaces(
+        food, // places data
+        'food-list', // ID of the list element
+        'No Food Banks found nearby', // Message for no results
+        'food'
+    );
+}
+
+function displayHealthcare(healthCareCenters) {
+    displayPlaces(
+        healthCareCenters, // places data
+        'health-list', // ID of the list element
+        'No Health Care Centers found nearby', // Message for no results
+        'health'
+    );
+}
+
+function printAndCreateMarker(placesArray, searchType, list) {
+    
     createMarker(placesArray);
     
     // Iterate through each place object in the 'places' array
     placesArray.forEach(function(place) {
         // Create a div element for each search result
         var searchResultDiv = document.createElement('div');
-        searchResultDiv.classList.add('search-card');
+        searchResultDiv.classList.add('search-card', `${searchType}`); // Add appropriate class
         
-        console.log(place.displayName);
-
         // Create a link element
         var link = document.createElement('a');
         link.href = "#"; // Set the href attribute
@@ -233,27 +301,130 @@ function displayPlaces(places, listElementId, noResultsMessage) {
     });
 }
 
+// For filtering
+// Add event listeners to filter buttons
+document.getElementById('all-filter').addEventListener('click', function() {
+    filterSelection('all'); // Filter results for food
+});
 
-function displayShelters(shelters) {
-    displayPlaces(
-        shelters, // places data
-        'shelter-list', // ID of the list element
-        'No shelters found nearby' // Message for no results
-    );
+document.getElementById('food-filter').addEventListener('click', function() {
+    filterSelection('all');
+    filterFoodSelection('food'); // Filter results for food
+});
+
+document.getElementById('housing-filter').addEventListener('click', function() {
+    filterSelection('all');
+    filterHouseSelection('housing'); // Filter results for housing
+});
+
+document.getElementById('health-filter').addEventListener('click', function() {
+    filterSelection('all');
+    filterHealthSelection('health'); // Filter results for health
+});
+
+function filterSelection(category) {
+    var searchResults = document.querySelectorAll('.search-card'); // Get all search result cards
+
+    // Loop through each search result card
+    searchResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = ''; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = 'none'; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
 }
 
-function displayFoodBanks(food) {
-    displayPlaces(
-        food, // places data
-        'food-banks', // ID of the list element
-        'No Food Banks found nearby' // Message for no results
-    );
+function filterFoodSelection(category) {
+    var housingResults = document.querySelectorAll('.search-card.housing'); // Get all search result cards
+    var healthResults = document.querySelectorAll('.search-card.health'); // Get all search result cards
+
+    // Loop through each search result card
+    housingResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = 'none'; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = ''; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
+    // Loop through each search result card
+    healthResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = 'none'; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = ''; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
 }
 
-function displayHealthcare(healthCareCenters) {
-    displayPlaces(
-        healthCareCenters, // places data
-        'healthcare-centers', // ID of the list element
-        'No Health Care Centers found nearby' // Message for no results
-    );
+function filterHouseSelection(category) {
+    var foodResults = document.querySelectorAll('.search-card.food'); // Get all search result cards
+    var healthResults = document.querySelectorAll('.search-card.health'); // Get all search result cards
+
+    // Loop through each search result card
+    foodResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = 'none'; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = ''; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
+    // Loop through each search result card
+    healthResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = 'none'; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = ''; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
+}
+
+function filterHealthSelection(category) {
+    var foodResults = document.querySelectorAll('.search-card.food'); // Get all search result cards
+    var housingResults = document.querySelectorAll('.search-card.housing'); // Get all search result cards
+
+    // Loop through each search result card
+    housingResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = 'none'; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = ''; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
+    // Loop through each search result card
+    foodResults.forEach(function(result) {
+        // Check if the result belongs to the selected category
+        if (category === 'all') {
+            result.style.display = 'none'; // Display the result
+        } else if(result.classList.contains(category)){
+            result.style.display = ''; // Display the result
+        } 
+        else {
+            result.style.display = 'none'; // Hide the result
+        }
+    });
 }

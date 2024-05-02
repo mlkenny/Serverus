@@ -202,33 +202,42 @@ body {
 	color: var(--color-white) !important;
 }
 /*SEARCH CARD*/
+/* Initially display all search result cards */
 .search-card {
-	border-radius: 5px;
-	background-color: var(--color-white);
-	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-	padding: 6px 15px;
-	position: relative;
-	margin-top: 10px;
-	width: 100%;
+    border-radius: 5px;
+    background-color: var(--color-white);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    padding: 6px 15px;
+    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    display: block; /* Ensure search cards are initially visible */
 }
+
+
+
 .search-card a {
-	color: inherit;
-	text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
+
 .search-card p {
-	font-size: 14px;
-	font-family: var(--font-inter);
-	margin-bottom: 3px;
+    font-size: 14px;
+    font-family: var(--font-inter);
+    margin-bottom: 3px;
 }
+
 .search-card i {
-	font-size: 12px;
-	position: absolute;
-	right: 10px;
-	bottom: 5px;
+    font-size: 12px;
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
 }
+
 .search-card i.checked-star {
-	color: orange;
+    color: orange;
 }
+
 
 /* Style for the parent container */
 .left-content {
@@ -253,7 +262,7 @@ body {
 .adjust-api-map form {
 	position: absolute;
 	top: 25px;
-	left: 50%;
+	left: 40%;
 	transform: translateX(-50%);
 	width: 90%;
 	z-index: 99999;
