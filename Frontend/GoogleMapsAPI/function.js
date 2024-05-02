@@ -88,7 +88,7 @@ document.getElementById('location').addEventListener('keypress', function(event)
 });
 
 const apiUrl = `https://places.googleapis.com/v1/places:searchText`;
-const apiKey = 'INPUTAPI'; // Input your API key here.
+const apiKey = 'GOOGLEAPIKEY'; // Input your API key here.
 
 function handleSearch(location) {
         // Regular expression patterns for city, state, and zip code validation
